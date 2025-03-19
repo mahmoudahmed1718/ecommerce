@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/helper_function/on_generate_route.dart';
 import 'package:ecommerce/feature/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashView(),
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: SplashView.routeName,
     );
   }
 }
