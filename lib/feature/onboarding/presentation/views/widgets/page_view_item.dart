@@ -11,9 +11,11 @@ class PageViewItem extends StatelessWidget {
     required this.backgroundImage,
     required this.subtitle,
     required this.title,
+    required this.isVisible,
   });
   final String image, backgroundImage, subtitle;
   final Widget title;
+  final bool isVisible;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +37,10 @@ class PageViewItem extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(16),
-                child: Text(LocaleKeys.skip.tr()),
+                child: Visibility(
+                  visible: isVisible,
+                  child: Text(LocaleKeys.skip.tr()),
+                ),
               ),
             ],
           ),
