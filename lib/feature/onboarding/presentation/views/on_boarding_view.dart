@@ -1,10 +1,11 @@
+import 'package:ecommerce/feature/onboarding/presentation/views/widgets/on_boarding_pageview.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatelessWidget {
-  const OnBoardingView({Key? key}) : super(key: key);
+  const OnBoardingView({super.key});
   static const String routeName = '/onboarding';
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(body: OnBoardingPageView());
   }
 }
