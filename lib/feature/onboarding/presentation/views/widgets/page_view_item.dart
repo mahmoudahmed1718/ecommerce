@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/utils/app_images.dart';
+import 'package:ecommerce/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,18 +16,35 @@ class PageViewItem extends StatelessWidget {
   final Widget title;
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Positioned.fill(
-          child: SvgPicture.asset(backgroundImage, fit: BoxFit.fill),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
+        SizedBox(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: SvgPicture.asset(backgroundImage, fit: BoxFit.fill),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
 
-          child: SvgPicture.asset(image),
+                child: SvgPicture.asset(image),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(LocaleKeys.skip.tr()),
+              ),
+            ],
+          ),
         ),
+        const SizedBox(height: 64),
+        title,
+        const SizedBox(height: 24),
+        Text(subtitle, textAlign: TextAlign.center),
+        const SizedBox(height: 80),
       ],
     );
   }
