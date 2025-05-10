@@ -4,5 +4,6 @@
 
 abstract class  LocaleKeys {
   static const skip = 'skip';
+  static const Login = 'Login';
 
 }
