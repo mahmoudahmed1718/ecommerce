@@ -1,14 +1,30 @@
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
+import 'package:ecommerce/feature/auth/presentation/view/widgets/custom_check_box.dart';
 import 'package:flutter/material.dart';
 
-class TermsAndCondationWidget extends StatelessWidget {
+class TermsAndCondationWidget extends StatefulWidget {
   const TermsAndCondationWidget({super.key});
+
+  @override
+  State<TermsAndCondationWidget> createState() =>
+      _TermsAndCondationWidgetState();
+}
+
+class _TermsAndCondationWidgetState extends State<TermsAndCondationWidget> {
+  bool isTermsAccepted = false;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(value: false, onChanged: (value) {}),
+        CustomCheckBox(
+          isChecked: isTermsAccepted,
+          onChecked: (value) {
+            setState(() {
+              isTermsAccepted = value;
+            });
+          },
+        ),
         const SizedBox(width: 16),
         Expanded(
           child: Text.rich(
