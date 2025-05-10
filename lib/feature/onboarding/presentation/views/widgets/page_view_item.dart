@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,10 +45,14 @@ class PageViewItem extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 64),
+        const SizedBox(height: 34),
         title,
         const SizedBox(height: 24),
-        Text(subtitle, textAlign: TextAlign.center),
+        Text(
+          subtitle,
+          textAlign: TextAlign.center,
+          style: TextStyles.semiBold13.copyWith(color: Color(0XFF4E5456)),
+        ),
         const SizedBox(height: 80),
       ],
     );
