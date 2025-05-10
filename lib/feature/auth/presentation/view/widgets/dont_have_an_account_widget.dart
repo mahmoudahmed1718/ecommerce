@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
+import 'package:ecommerce/feature/auth/presentation/view/sign_up_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class DontHaveAnAccountWidget extends StatelessWidget {
             recognizer:
                 TapGestureRecognizer()
                   ..onTap = () {
-                    // Navigator.pushNamed(context, SignupView.routeName);
+                    Navigator.pushNamed(context, SignUpView.routeName);
                   },
             text: 'قم بإنشاء حساب',
             style: TextStyles.semiBold16.copyWith(

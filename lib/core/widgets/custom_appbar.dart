@@ -9,6 +9,6 @@ AppBar buildAppbar({required BuildContext context, required String titel}) =>
         },
         child: Icon(Icons.arrow_back_ios_new_outlined),
       ),
-
+      centerTitle: true,
       title: Text(titel, style: TextStyles.bold23),
     );
