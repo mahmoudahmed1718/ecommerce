@@ -3,11 +3,14 @@ import 'package:ecommerce/core/helper/on_generate_routes.dart';
 import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/feature/splash/presentation/views/splash_view.dart';
+import 'package:ecommerce/firebase_options.dart';
 import 'package:ecommerce/generated/codegen_loader.g.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await EasyLocalization.ensureInitialized();
   await SharedPreferenceSingleton.init();
 

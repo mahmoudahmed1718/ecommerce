@@ -39,9 +39,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   void excuteNaviation() {
-    bool isonboardingViewSeen = SharedPreferenceSingleton.getBool(
-      kIsOnboardingViewSeen,
-    );
+    bool isonboardingViewSeen =
+        SharedPreferenceSingleton.getBool(kIsOnboardingViewSeen) ?? false;
     // Provide a default value of false if null
     Future.delayed(const Duration(seconds: 2), () {
       if (isonboardingViewSeen) {
