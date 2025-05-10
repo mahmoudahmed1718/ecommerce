@@ -1,7 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/widgets/custom_button.dart';
+import 'package:ecommerce/feature/auth/presentation/view/login_view.dart';
 import 'package:ecommerce/feature/onboarding/presentation/views/widgets/on_boarding_pageview.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +56,17 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           maintainState: true,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: khorzintalPadding),
-            child: CustomButton(onpressed: () {}, text: 'next'),
+            child: CustomButton(
+              onpressed: () {
+                SharedPreferenceSingleton.setBool(kIsOnboardingViewSeen, true);
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  LoginView.routeName,
+                  (route) => false,
+                );
+              },
+              text: 'next',
+            ),
           ),
         ),
         const SizedBox(height: 42),

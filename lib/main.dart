@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/helper/on_generate_routes.dart';
+import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/feature/splash/presentation/views/splash_view.dart';
 import 'package:ecommerce/generated/codegen_loader.g.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await SharedPreferenceSingleton.init();
 
   runApp(
     EasyLocalization(

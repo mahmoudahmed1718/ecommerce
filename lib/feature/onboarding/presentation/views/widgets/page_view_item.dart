@@ -1,5 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
+import 'package:ecommerce/feature/auth/presentation/view/login_view.dart';
 import 'package:ecommerce/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,7 +42,20 @@ class PageViewItem extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Visibility(
                   visible: isVisible,
-                  child: Text(LocaleKeys.skip.tr()),
+                  child: GestureDetector(
+                    onTap: () {
+                      SharedPreferenceSingleton.setBool(
+                        kIsOnboardingViewSeen,
+                        true,
+                      );
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        LoginView.routeName,
+                        (route) => false,
+                      );
+                    },
+                    child: Text(LocaleKeys.skip.tr()),
+                  ),
                 ),
               ),
             ],
