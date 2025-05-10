@@ -1,5 +1,7 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/widgets/custom_button.dart';
 import 'package:ecommerce/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce/feature/auth/presentation/view/widgets/have_an_account_widgets.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/terms_and_condation_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +38,10 @@ class SignupViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             TermsAndCondationWidget(),
+            const SizedBox(height: 16),
+            CustomButton(onpressed: () {}, text: 'Sign Up'),
+            const SizedBox(height: 26),
+            HaveAnAccountWidget(),
           ],
         ),
       ),
