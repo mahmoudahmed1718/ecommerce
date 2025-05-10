@@ -1,4 +1,5 @@
-import 'package:ecommerce/feature/auth/domain/entities/user_entity.dart';
+import 'package:ecommerce/core/error/exception.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthServices {
@@ -12,12 +13,16 @@ class FirebaseAuthServices {
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        throw CustomException(message: 'The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        throw CustomException(
+          message: 'The account already exists for that email.',
+        );
+      } else {
+        throw CustomException(message: 'An unknown error occurred.');
       }
     } catch (e) {
-      print(e);
+      throw CustomException(message: 'An unknown error occurred.');
     }
   }
 }
