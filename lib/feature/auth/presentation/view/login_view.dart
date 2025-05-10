@@ -10,7 +10,25 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppbar(context: context, titel: LocaleKeys.Login.tr()),
+      appBar: buildAppbar(
+        context: context,
+        titel: LocaleKeys.Login.tr(),
+
+        actions: [
+          IconButton(
+            onPressed: () {
+              final currentLocale = context.locale;
+
+              if (currentLocale.languageCode == 'ar') {
+                context.setLocale(const Locale('en'));
+              } else {
+                context.setLocale(const Locale('ar'));
+              }
+            },
+            icon: const Icon(Icons.language),
+          ),
+        ],
+      ),
       body: LoginViewBody(),
     );
   }
