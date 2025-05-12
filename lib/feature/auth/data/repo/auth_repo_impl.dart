@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce/core/error/exception.dart';
 import 'package:ecommerce/core/error/faileur.dart';
@@ -25,6 +27,27 @@ class AuthRepoImpl implements AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFaileur(message: e.message));
     } catch (e) {
+      return left(ServerFaileur(message: 'An unknown error occurred.'));
+    }
+  }
+
+  @override
+  Future<Either<Faileur, UserEntity>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      var user = await firebaseAuthServices.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return right(UserModel.formFireBaseUser(user!));
+    } on CustomException catch (e) {
+      return left(ServerFaileur(message: e.message));
+    } catch (e) {
+      log(
+        'execption on authRepoImpl.signInWithEmailAndPassword. ${e.toString()}',
+      );
       return left(ServerFaileur(message: 'An unknown error occurred.'));
     }
   }
