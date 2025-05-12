@@ -3,7 +3,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/app_images.dart';
-import 'package:ecommerce/feature/auth/presentation/view/login_view.dart';
+import 'package:ecommerce/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:ecommerce/feature/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +44,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     // Provide a default value of false if null
     Future.delayed(const Duration(seconds: 2), () {
       if (isonboardingViewSeen) {
-        Navigator.pushReplacementNamed(context, LoginView.routeName);
+        Navigator.pushReplacementNamed(context, SignInView.routeName);
       } else {
         Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
       }

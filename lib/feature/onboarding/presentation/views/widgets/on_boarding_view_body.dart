@@ -3,7 +3,7 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/widgets/custom_button.dart';
-import 'package:ecommerce/feature/auth/presentation/view/login_view.dart';
+import 'package:ecommerce/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:ecommerce/feature/onboarding/presentation/views/widgets/on_boarding_pageview.dart';
 import 'package:flutter/material.dart';
 
@@ -61,7 +61,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 SharedPreferenceSingleton.setBool(kIsOnboardingViewSeen, true);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
-                  LoginView.routeName,
+                  SignInView.routeName,
                   (route) => false,
                 );
               },

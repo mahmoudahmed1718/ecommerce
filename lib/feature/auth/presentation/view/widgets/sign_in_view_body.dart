@@ -9,8 +9,8 @@ import 'package:ecommerce/feature/auth/presentation/view/widgets/or_divder.dart'
 import 'package:ecommerce/feature/auth/presentation/view/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatelessWidget {
+  const SignInViewBody({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(
