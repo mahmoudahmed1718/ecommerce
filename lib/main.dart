@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/helper/on_generate_routes.dart';
+import 'package:ecommerce/core/services/get_it_service.dart';
 import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/feature/splash/presentation/views/splash_view.dart';
@@ -14,7 +15,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await EasyLocalization.ensureInitialized();
   await SharedPreferenceSingleton.init();
-
+  setupGetIt();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
