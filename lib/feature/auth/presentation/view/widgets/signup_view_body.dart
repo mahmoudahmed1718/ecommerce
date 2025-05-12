@@ -18,6 +18,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? email, password, name;
+  late bool isTermsAccepted = false;
   bool isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -66,17 +67,34 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 ),
               ),
               const SizedBox(height: 16),
-              TermsAndCondationWidget(),
+              TermsAndCondationWidget(
+                onchanged: (value) {
+                  setState(() {
+                    isTermsAccepted = value;
+                  });
+                },
+              ),
               const SizedBox(height: 16),
               CustomButton(
                 onpressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    context.read<SignUpCubit>().signUp(
-                      email: email!,
-                      password: password!,
-                      name: name!,
-                    );
+                    if (isTermsAccepted) {
+                      context.read<SignUpCubit>().signUp(
+                        email: email!,
+                        password: password!,
+                        name: name!,
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Please accept the terms and conditions',
+                          ),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    }
                   } else {
                     setState(() {
                       autovalidateMode = AutovalidateMode.always;
