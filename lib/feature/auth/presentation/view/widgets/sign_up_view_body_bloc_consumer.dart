@@ -15,7 +15,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
         if (state is SignupFailState) {
           _showErrorSnackBar(context, state.error);
         } else if (state is SignupSuccessState) {
-          Navigator.pushReplacementNamed(context, '/home');
+          _showErrorSnackBar(context, 'Signup successful');
         }
       },
       builder: (context, state) {
