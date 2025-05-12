@@ -1,9 +1,11 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/widgets/custom_button.dart';
 import 'package:ecommerce/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce/feature/auth/presentation/manger/cubit/sign_up/sign_up_cubit.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/have_an_account_widgets.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/terms_and_condation_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -45,6 +47,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               ),
               const SizedBox(height: 16),
               CustomTextFormField(
+                isObscure: isObscure,
                 onSaved: (value) {
                   password = value;
                 },
@@ -69,7 +72,11 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 onpressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    // Call the sign-up function here
+                    context.read<SignUpCubit>().signUp(
+                      email: email!,
+                      password: password!,
+                      name: name!,
+                    );
                   } else {
                     setState(() {
                       autovalidateMode = AutovalidateMode.always;
