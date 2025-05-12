@@ -51,4 +51,14 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFaileur(message: 'An unknown error occurred.'));
     }
   }
+
+  Future<Either<Faileur, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthServices.signInWithGoogle();
+      return right(UserModel.formFireBaseUser(user));
+    } catch (e) {
+      log('execption on authRepoImpl.signInWithGoogle. ${e.toString()}');
+      return left(ServerFaileur(message: 'An unknown error occurred.'));
+    }
+  }
 }
