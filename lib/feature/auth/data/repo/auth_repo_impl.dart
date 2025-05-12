@@ -61,4 +61,15 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFaileur(message: 'An unknown error occurred.'));
     }
   }
+
+  @override
+  Future<Either<Faileur, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthServices.signInWithFacebook();
+      return right(UserModel.formFireBaseUser(user));
+    } catch (e) {
+      log('execption on authRepoImpl.signInWithFacebook. ${e.toString()}');
+      return left(ServerFaileur(message: 'An unknown error occurred.'));
+    }
+  }
 }
