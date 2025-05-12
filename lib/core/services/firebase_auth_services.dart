@@ -61,13 +61,15 @@ class FirebaseAuthServices {
           message: 'Please check your internet connection.',
         );
       } else {
-        throw CustomException(message: 'An unknown error occurred.');
+        // here is the problem from firebase console not shown the real error when
+        //i use the email and password that not exist in firebase console
+        throw CustomException(message: 'email or password is not correct.');
       }
     } catch (e) {
       log(
         'execption on firebaseAuthServerce.signInWithEmailAndPassword. ${e.toString()}',
       );
-      throw CustomException(message: 'An unknown error occurred.');
+      throw CustomException(message: 'email or password is not correct.');
     }
   }
 }
