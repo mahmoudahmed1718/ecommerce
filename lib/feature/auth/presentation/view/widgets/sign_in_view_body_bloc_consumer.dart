@@ -16,6 +16,12 @@ class SignInViewBodyBlocConsumer extends StatelessWidget {
             SnackBar(content: Text(state.error), backgroundColor: Colors.red),
           );
         } else if (state is SignInSuccessState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Login successful'),
+              backgroundColor: Colors.green,
+            ),
+          );
           // Navigator.pushReplacementNamed(context, '/home');
         }
       },
