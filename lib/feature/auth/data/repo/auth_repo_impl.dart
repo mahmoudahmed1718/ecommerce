@@ -36,15 +36,17 @@ class AuthRepoImpl implements AuthRepo {
 
       return right(userEntity);
     } on CustomException catch (e) {
-      if (user != null) {
-        await firebaseAuthServices.deleteUser();
-      }
+      await deleteuser(user);
       return left(ServerFaileur(message: e.message));
     } catch (e) {
-      if (user != null) {
-        await firebaseAuthServices.deleteUser();
-      }
+      deleteuser(user);
       return left(ServerFaileur(message: 'An unknown error occurred.'));
+    }
+  }
+
+  Future<void> deleteuser(User? user) async {
+    if (user != null) {
+      await firebaseAuthServices.deleteUser();
     }
   }
 
