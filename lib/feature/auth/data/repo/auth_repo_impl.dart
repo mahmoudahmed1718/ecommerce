@@ -9,6 +9,7 @@ import 'package:ecommerce/core/utils/backend_points.dart';
 import 'package:ecommerce/feature/auth/data/models/user_model.dart';
 import 'package:ecommerce/feature/auth/domain/entities/user_entity.dart';
 import 'package:ecommerce/feature/auth/domain/repo/auth_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final FirebaseAuthServices firebaseAuthServices;
@@ -23,17 +24,25 @@ class AuthRepoImpl implements AuthRepo {
     required String password,
     // required String name,
   }) async {
+    User? user;
     try {
-      var user = await firebaseAuthServices.createUserWithEmailAndPassword(
+      user = await firebaseAuthServices.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
       final userEntity = UserModel.formFireBaseUser(user!);
       addUserDataToFirestore(user: userEntity);
+
       return right(userEntity);
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthServices.deleteUser();
+      }
       return left(ServerFaileur(message: e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthServices.deleteUser();
+      }
       return left(ServerFaileur(message: 'An unknown error occurred.'));
     }
   }
