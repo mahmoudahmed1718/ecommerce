@@ -5,7 +5,6 @@ import 'package:ecommerce/core/error/exception.dart';
 import 'package:ecommerce/core/error/faileur.dart';
 import 'package:ecommerce/core/services/database_service.dart';
 import 'package:ecommerce/core/services/firebase_auth_services.dart';
-import 'package:ecommerce/core/services/firestore_service.dart';
 import 'package:ecommerce/core/utils/backend_points.dart';
 import 'package:ecommerce/feature/auth/data/models/user_model.dart';
 import 'package:ecommerce/feature/auth/domain/entities/user_entity.dart';
@@ -29,7 +28,9 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.formFireBaseUser(user!));
+      final userEntity = UserModel.formFireBaseUser(user!);
+      addUserDataToFirestore(user: userEntity);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFaileur(message: e.message));
     } catch (e) {
