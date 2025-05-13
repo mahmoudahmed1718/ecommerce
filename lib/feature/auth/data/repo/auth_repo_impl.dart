@@ -22,6 +22,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Faileur, UserEntity>> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String name,
     // required String name,
   }) async {
     User? user;
@@ -30,7 +31,7 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      final userEntity = UserModel.formFireBaseUser(user!);
+      final userEntity = UserEntity(id: user!.uid, name: name, email: email);
       addUserDataToFirestore(user: userEntity);
 
       return right(userEntity);
