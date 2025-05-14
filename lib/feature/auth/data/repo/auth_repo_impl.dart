@@ -60,7 +60,8 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.formFireBaseUser(user!));
+      var userData = await getDataUser(userId: user!.uid);
+      return right(userData);
     } on CustomException catch (e) {
       return left(ServerFaileur(message: e.message));
     } catch (e) {
@@ -105,5 +106,22 @@ class AuthRepoImpl implements AuthRepo {
       path: BackendPoints.addUserData,
       data: user.toMap(),
     );
+  }
+
+  @override
+  Future<UserEntity> getDataUser({required String userId}) async {
+    try {
+      var userData = await databaseService.getData(
+        path: BackendPoints.getUserData,
+        documentId: userId,
+      );
+      return UserModel.fromJson(userData);
+    } on ServerFaileur catch (e) {
+      log('execption on authRepoImpl.getDataUser. ${e.toString()}');
+      throw CustomException(message: 'An unknown error occurred.');
+    } catch (e) {
+      log('execption on authRepoImpl.getDataUser. ${e.toString()}');
+      throw CustomException(message: 'An unknown error occurred.');
+    }
   }
 }
