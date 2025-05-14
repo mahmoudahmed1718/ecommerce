@@ -12,4 +12,8 @@ abstract class DatabaseService {
     required String path,
     required String documentId,
   });
+  Future<bool> checkUserExists({
+    required String path,
+    required String documentId,
+  });
 }

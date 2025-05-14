@@ -78,6 +78,15 @@ class AuthRepoImpl implements AuthRepo {
     try {
       user = await firebaseAuthServices.signInWithGoogle();
       var userentity = UserModel.formFireBaseUser(user);
+      var isUserExists = await databaseService.checkUserExists(
+        path: BackendPoints.getUserData,
+        documentId: userentity.id,
+      );
+      if (isUserExists) {
+        await getDataUser(userId: user.uid);
+      } else {
+        await addUserDataToFirestore(user: userentity);
+      }
       return right(userentity);
     } catch (e) {
       await deleteuser(user);
@@ -92,6 +101,15 @@ class AuthRepoImpl implements AuthRepo {
     try {
       user = await firebaseAuthServices.signInWithFacebook();
       var userentity = UserModel.formFireBaseUser(user);
+      var isUserexsit = await databaseService.checkUserExists(
+        path: BackendPoints.getUserData,
+        documentId: userentity.id,
+      );
+      if (isUserexsit) {
+        await getDataUser(userId: user.uid);
+      } else {
+        await addUserDataToFirestore(user: userentity);
+      }
       return right(userentity);
     } catch (e) {
       deleteuser(user);
