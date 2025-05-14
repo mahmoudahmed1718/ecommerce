@@ -71,11 +71,15 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+  @override
   Future<Either<Faileur, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await firebaseAuthServices.signInWithGoogle();
-      return right(UserModel.formFireBaseUser(user));
+      user = await firebaseAuthServices.signInWithGoogle();
+      var userentity = UserModel.formFireBaseUser(user);
+      return right(userentity);
     } catch (e) {
+      await deleteuser(user);
       log('execption on authRepoImpl.signInWithGoogle. ${e.toString()}');
       return left(ServerFaileur(message: 'An unknown error occurred.'));
     }
@@ -83,10 +87,13 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Faileur, UserEntity>> signInWithFacebook() async {
+    User? user;
     try {
-      var user = await firebaseAuthServices.signInWithFacebook();
-      return right(UserModel.formFireBaseUser(user));
+      user = await firebaseAuthServices.signInWithFacebook();
+      var userentity = UserModel.formFireBaseUser(user);
+      return right(userentity);
     } catch (e) {
+      deleteuser(user);
       log('execption on authRepoImpl.signInWithFacebook. ${e.toString()}');
       return left(ServerFaileur(message: 'An unknown error occurred.'));
     }
