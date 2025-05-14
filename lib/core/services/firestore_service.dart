@@ -9,4 +9,10 @@ class FirestoreService implements DatabaseService {
   }) async {
     await FirebaseFirestore.instance.collection(path).add(data);
   }
+
+  @override
+  Future<void> getData({required String path, required String documentId}) {
+    // TODO: implement getData
+    throw UnimplementedError();
+  }
 }
