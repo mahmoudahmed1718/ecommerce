@@ -3,28 +3,71 @@ import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/core/widgets/featured_item_button.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg_provider/flutter_svg_provider.dart ' as svg;
+
 class FeaturedItem extends StatelessWidget {
   const FeaturedItem({super.key});
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(Assets.imagesWatermelonTest),
+    var itemWidth = MediaQuery.of(context).size.width;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(4),
+      child: SizedBox(
+        height: itemWidth * 0.4,
+        width: itemWidth,
+        child: AspectRatio(
+          aspectRatio: 342 / 128,
+          child: Stack(
+            children: [
+              Positioned(
+                left: itemWidth * 0.4,
+                top: 0,
+                bottom: 0,
+                right: 0,
 
-        Column(
-          children: [
-            Text(
-              'Eid Offer',
-              style: TextStyles.regular13.copyWith(color: Colors.white),
-            ),
-            Text(
-              '25% discount',
-              style: TextStyles.regular13.copyWith(color: Colors.white),
-            ),
-            FeaturedItemButton(onpressed: () {}),
-          ],
+                child: Image.asset(
+                  Assets.imagesWatermelonTest,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Container(
+                height: itemWidth * 0.4,
+                width: itemWidth * 0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: svg.Svg(
+                      Assets.imagesFeaturedItemBackground,
+                      scale: 0.1,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 33),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 25),
+                    Text(
+                      'Eid Offer',
+                      style: TextStyles.regular13.copyWith(color: Colors.white),
+                    ),
+                    Spacer(),
+                    Text(
+                      '25% discount',
+                      style: TextStyles.bold16.copyWith(color: Colors.white),
+                    ),
+                    const SizedBox(height: 9),
+                    FeaturedItemButton(onpressed: () {}),
+                    const SizedBox(height: 29),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-      ],
+      ),
     );
   }
 }
