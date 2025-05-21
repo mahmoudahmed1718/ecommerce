@@ -9,7 +9,7 @@ class FeaturedItem extends StatelessWidget {
   const FeaturedItem({super.key});
   @override
   Widget build(BuildContext context) {
-    var itemWidth = MediaQuery.of(context).size.width;
+    var itemWidth = MediaQuery.of(context).size.width - 32;
     return ClipRRect(
       borderRadius: BorderRadius.circular(4),
       child: SizedBox(
