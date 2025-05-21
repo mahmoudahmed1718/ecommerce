@@ -8,18 +8,36 @@ class CustomSearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        suffixIcon: SvgPicture.asset(Assets.imagesFilter),
-
-        hintText: 'Search for products',
-        hintStyle: TextStyles.regular13.copyWith(color: Color(0XFF949D9E)),
-        filled: true,
-        fillColor: Color(0XFFF9FAFA),
-        border: buildBorder(),
-        enabledBorder: buildBorder(),
-        focusedBorder: buildBorder(),
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0X0A000000).withValues(alpha: 0.1),
+            blurRadius: 9,
+            offset: const Offset(0, 2),
+            spreadRadius: 0,
+          ),
+        ],
+      ),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          suffixIcon: SizedBox(
+            width: 20,
+            child: Center(child: SvgPicture.asset(Assets.imagesFilter)),
+          ),
+          prefixIcon: SizedBox(
+            width: 20,
+            child: Center(child: SvgPicture.asset(Assets.imagesSearchIcon)),
+          ),
+          hintText: 'Search for products',
+          hintStyle: TextStyles.regular13.copyWith(color: Color(0XFF949D9E)),
+          filled: true,
+          fillColor: Colors.white,
+          border: buildBorder(),
+          enabledBorder: buildBorder(),
+          focusedBorder: buildBorder(),
+        ),
       ),
     );
   }
@@ -27,7 +45,7 @@ class CustomSearchTextField extends StatelessWidget {
   OutlineInputBorder buildBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
-      borderSide: BorderSide(width: 1, color: Color(0XFFE6E9E9)),
+      borderSide: BorderSide(width: 1, color: Colors.white),
     );
   }
 }

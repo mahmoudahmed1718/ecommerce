@@ -1,3 +1,5 @@
+import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/core/widgets/custom_search_text_field.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -5,8 +7,23 @@ class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [SliverToBoxAdapter(child: const CustomHomeAppBar())],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                SizedBox(height: kVerticalPadding),
+                const CustomHomeAppBar(),
+                const SizedBox(height: kVerticalPadding),
+
+                CustomSearchTextField(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
