@@ -44,7 +44,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     bool isonboardingViewSeen =
         SharedPreferenceSingleton.getBool(kIsOnboardingViewSeen) ?? false;
     // Provide a default value of false if null
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (isonboardingViewSeen) {
         var isLoggedIn = FirebaseAuthServices().isUserLoggedIn();
 
