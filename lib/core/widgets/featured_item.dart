@@ -58,7 +58,7 @@ class FeaturedItem extends StatelessWidget {
                       '25% discount',
                       style: TextStyles.bold16.copyWith(color: Colors.white),
                     ),
-                    const SizedBox(height: 9),
+                    const SizedBox(height: 4),
                     FeaturedItemButton(onpressed: () {}),
                     const SizedBox(height: 29),
                   ],
