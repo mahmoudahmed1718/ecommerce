@@ -13,7 +13,7 @@ class FruitItem extends StatelessWidget {
       height: 180,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey[200],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Stack(
@@ -30,7 +30,7 @@ class FruitItem extends StatelessWidget {
               /// Fruit Image
               Image.asset(
                 Assets.imagesWatermelonTest,
-                height: 60,
+                height: 100,
                 fit: BoxFit.contain,
               ),
 
@@ -42,7 +42,7 @@ class FruitItem extends StatelessWidget {
                 children: [
                   /// + Button
                   CircleAvatar(
-                    radius: 16,
+                    radius: 24,
                     backgroundColor: Colors.green,
                     child: Icon(Icons.add, color: Colors.white, size: 20),
                   ),
