@@ -1,11 +1,14 @@
+import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      width: 375,
+      height: 75,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -23,6 +26,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
         ],
       ),
+      child: InActiveItem(image: Assets.imagesVuesaxOutlineHome),
     );
+  }
+}
+
+class InActiveItem extends StatelessWidget {
+  const InActiveItem({super.key, required this.image});
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(image);
   }
 }
