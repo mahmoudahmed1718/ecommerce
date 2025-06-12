@@ -1,49 +1,68 @@
+import 'package:flutter/material.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
-import 'package:flutter/material.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      width: 100,
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      width: 120,
+      height: 180,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Stack(
         children: [
-          Positioned(
-            top: 0,
-            right: 0,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite_border),
-            ),
-          ),
-          Positioned.fill(
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                Image.asset(Assets.imagesWatermelonTest),
-                const SizedBox(height: 24),
-                ListTile(
-                  title: Text('بطيخ', style: TextStyles.semiBold16),
+          /// Heart Icon (top-right)
+          Positioned(top: 0, right: 0, child: Icon(Icons.favorite_border)),
 
-                  subtitle: Text.rich(
-                    textAlign: TextAlign.right,
-                    TextSpan(
+          /// Main Column Layout
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 12),
+
+              /// Fruit Image
+              Image.asset(
+                Assets.imagesWatermelonTest,
+                height: 60,
+                fit: BoxFit.contain,
+              ),
+
+              const Spacer(),
+
+              /// Bottom Row with Button and Text
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  /// + Button
+                  CircleAvatar(
+                    radius: 16,
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.add, color: Colors.white, size: 20),
+                  ),
+                  const Spacer(),
+
+                  /// Text Column (Right-Aligned)
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        TextSpan(
-                          text: '2.5',
+                        Text('بطيخ', style: TextStyles.semiBold16),
+                        Text(
+                          '30 جنيه',
                           style: TextStyles.bold16.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
                         ),
-                        TextSpan(
-                          text: ' / كيلو',
+                        Text(
+                          '/ الكيلو',
                           style: TextStyles.regular13.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
@@ -51,18 +70,9 @@ class FruitItem extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  trailing: CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Colors.green,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.add, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ],
       ),
