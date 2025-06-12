@@ -1,6 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/widgets/custom_button.dart';
-import 'package:ecommerce/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:ecommerce/feature/auth/presentation/manger/cubit/sign_up/sign_up_cubit.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/have_an_account_widgets.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/terms_and_condation_widget.dart';

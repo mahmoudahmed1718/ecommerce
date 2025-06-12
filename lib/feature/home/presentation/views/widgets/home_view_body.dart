@@ -1,6 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/widgets/best_selling_header.dart';
-import 'package:ecommerce/core/widgets/custom_search_text_field.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:ecommerce/core/widgets/featured_item.dart';
 import 'package:ecommerce/core/widgets/fruit_item.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/best_selling_grid_view.dart';

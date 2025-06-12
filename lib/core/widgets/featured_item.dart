@@ -1,6 +1,6 @@
 import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
-import 'package:ecommerce/core/widgets/featured_item_button.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/featured_item_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg_provider/flutter_svg_provider.dart ' as svg;

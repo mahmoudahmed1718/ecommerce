@@ -3,7 +3,7 @@ import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/core/widgets/custom_button.dart';
-import 'package:ecommerce/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:ecommerce/feature/auth/presentation/manger/cubit/cubit/sign_in_cubit.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/dont_have_an_account_widget.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/or_divder.dart';
