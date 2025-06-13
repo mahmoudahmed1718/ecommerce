@@ -41,12 +41,6 @@ class FruitItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   /// + Button
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundColor: Colors.green,
-                    child: Icon(Icons.add, color: Colors.white, size: 20),
-                  ),
-                  const Spacer(),
 
                   /// Text Column (Right-Aligned)
                   Directionality(
@@ -69,6 +63,12 @@ class FruitItem extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  const Spacer(),
+                  CircleAvatar(
+                    radius: 24,
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.add, color: Colors.white, size: 20),
                   ),
                 ],
               ),
