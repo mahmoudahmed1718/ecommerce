@@ -18,6 +18,12 @@ List<NavigationBarItemEntity> get navigationBarItems => [
   ),
   NavigationBarItemEntity(
     title: 'shop',
+    activeIcon: Assets.imagesVuesaxBoldProducts,
+    inactiveIcon: Assets.imagesVuesaxOutlineProducts,
+  ),
+
+  NavigationBarItemEntity(
+    title: 'Whishlist',
     activeIcon: Assets.imagesVuesaxBoldShoppingCart,
     inactiveIcon: Assets.imagesVuesaxOutlineShoppingCart,
   ),
@@ -26,11 +32,5 @@ List<NavigationBarItemEntity> get navigationBarItems => [
     title: 'profile',
     activeIcon: Assets.imagesVuesaxBoldUser,
     inactiveIcon: Assets.imagesVuesaxOutlineUser,
-  ),
-
-  NavigationBarItemEntity(
-    title: 'Whishlist',
-    activeIcon: Assets.imagesVuesaxBoldShoppingCart,
-    inactiveIcon: Assets.imagesVuesaxOutlineShoppingCart,
   ),
 ];
