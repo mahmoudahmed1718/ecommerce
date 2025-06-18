@@ -27,7 +27,7 @@ class SharedPreferenceSingleton {
     await preferences.setString(key, value);
   }
 
-  static String? getString(String key) {
+  static getString(String key) {
     return preferences.getString(key);
   }
 

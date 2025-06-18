@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/helper/get_user_data.dart';
 import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/core/widgets/notifacation_widget.dart';
@@ -16,7 +17,7 @@ class CustomHomeAppBar extends StatelessWidget {
         'Good Morning',
         style: TextStyles.regular16.copyWith(color: Color(0XFF949D9E)),
       ),
-      subtitle: Text('Mahmoud Ahmed', style: TextStyles.bold16),
+      subtitle: Text(getUserData().name, style: TextStyles.bold16),
     );
   }
 }

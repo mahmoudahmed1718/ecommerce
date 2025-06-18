@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/error/exception.dart';
 import 'package:ecommerce/core/error/faileur.dart';
 import 'package:ecommerce/core/services/database_service.dart';
 import 'package:ecommerce/core/services/firebase_auth_services.dart';
+import 'package:ecommerce/core/services/shared_prefernce_singlton.dart';
 import 'package:ecommerce/core/utils/backend_points.dart';
 import 'package:ecommerce/feature/auth/data/models/user_model.dart';
 import 'package:ecommerce/feature/auth/domain/entities/user_entity.dart';
@@ -61,6 +64,7 @@ class AuthRepoImpl implements AuthRepo {
         password: password,
       );
       var userData = await getDataUser(userId: user!.uid);
+      await saveUserData(userEntity: userData);
       return right(userData);
     } on CustomException catch (e) {
       return left(ServerFaileur(message: e.message));
@@ -142,5 +146,12 @@ class AuthRepoImpl implements AuthRepo {
       log('execption on authRepoImpl.getDataUser. ${e.toString()}');
       throw CustomException(message: 'An unknown error occurred.');
     }
+  }
+
+  @override
+  Future<UserEntity?> saveUserData({required UserEntity userEntity}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
+    await SharedPreferenceSingleton.setString(kUserData, jsonData);
+    return userEntity;
   }
 }
