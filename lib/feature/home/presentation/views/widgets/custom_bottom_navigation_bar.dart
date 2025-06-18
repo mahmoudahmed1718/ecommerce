@@ -1,6 +1,6 @@
-import 'package:ecommerce/core/utils/app_images.dart';
+import 'package:ecommerce/feature/home/domain/entites/navigation_bar_item_entity.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/bottom_naviagtion_bar_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -26,36 +26,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
         ],
       ),
-      child: InActiveItem(image: Assets.imagesVuesaxOutlineHome),
+      child: Row(
+        children:
+            navigationBarItems.map((item) {
+              return Expanded(
+                child: BottomNavigationbarItem(
+                  isActive: false,
+                  navigationBarItemEntity: item,
+                ),
+              );
+            }).toList(),
+      ),
     );
-  }
-}
-
-class InActiveItem extends StatelessWidget {
-  const InActiveItem({super.key, required this.image});
-  final String image;
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(image);
-  }
-}
-
-class ActiveItem extends StatelessWidget {
-  const ActiveItem({super.key, required this.image});
-  final String image;
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(image);
-  }
-}
-
-class BottomNavigationbarItem extends StatelessWidget {
-  const BottomNavigationbarItem({super.key, required this.isActive});
-  final bool isActive;
-  @override
-  Widget build(BuildContext context) {
-    return isActive
-        ? ActiveItem(image: Assets.imagesVuesaxOutlineHome)
-        : InActiveItem(image: Assets.imagesVuesaxOutlineHome);
   }
 }
