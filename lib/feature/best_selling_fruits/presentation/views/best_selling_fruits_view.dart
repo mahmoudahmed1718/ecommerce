@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/widgets/build_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BestSellingFruitsView extends StatelessWidget {
@@ -5,6 +6,6 @@ class BestSellingFruitsView extends StatelessWidget {
   static const String routeName = '/best-selling-fruits-view';
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(appBar: buildAppBar(context, title: 'Best Selling Fruits'));
   }
 }
