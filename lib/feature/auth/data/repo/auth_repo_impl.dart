@@ -122,7 +122,7 @@ class AuthRepoImpl implements AuthRepo {
   Future addUserDataToFirestore({required UserEntity user}) async {
     await databaseService.addData(
       path: BackendPoints.addUserData,
-      data: user.toMap(),
+      data: UserModel.fromEntity(user).toMap(),
       documentId: user.id,
     );
   }
