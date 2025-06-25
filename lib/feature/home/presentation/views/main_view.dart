@@ -1,17 +1,31 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/services/firebase_auth_services.dart';
+import 'package:ecommerce/feature/home/presentation/views/product_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/home_view.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/main_view_body.dart';
 import 'package:flutter/material.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends StatefulWidget {
   const MainView({super.key});
   static const String routeName = '/home';
 
   @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  int currentViewIndex = 0;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onItemTapped: (index) {
+          currentViewIndex = index;
+
+          setState(() {});
+        },
+      ),
       appBar: AppBar(
         actions: [
           IconButton(
@@ -37,7 +51,11 @@ class MainView extends StatelessWidget {
           child: Text('Logout', style: TextStyle(color: Colors.red)),
         ),
       ),
-      body: SafeArea(child: HomeView()),
+      body: SafeArea(child: MainViewBody(currentViewIndex: currentViewIndex)),
     );
+  }
+
+  Widget currentview() {
+    return [const HomeView(), const ProductView()][currentViewIndex];
   }
 }
