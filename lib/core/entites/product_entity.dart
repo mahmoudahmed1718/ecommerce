@@ -12,7 +12,7 @@ class ProductEntity {
   final bool isOrgainic;
   final int numberOfCalories;
   final int unitAmount;
-  final num avergeRating = 0;
+  final num avergeRating;
   final num rangeCount = 0;
   final List<ReviewEntity> reviews;
   ProductEntity({
@@ -21,6 +21,7 @@ class ProductEntity {
     required this.description,
     required this.price,
     required this.code,
+    required this.avergeRating,
     // required this.imageFile,
     this.isOrgainic = false,
     this.imageUrl,

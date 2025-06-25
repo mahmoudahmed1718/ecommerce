@@ -1,4 +1,6 @@
 import 'package:ecommerce/core/entites/product_entity.dart';
+import 'package:ecommerce/core/entites/review_entity.dart';
+import 'package:ecommerce/core/helper/get_average_rating.dart';
 import 'package:ecommerce/core/models/review_model.dart';
 
 class ProductModel extends ProductEntity {
@@ -8,6 +10,7 @@ class ProductModel extends ProductEntity {
     required super.description,
     required super.price,
     required super.code,
+    required super.avergeRating,
     // required super.imageFile,
     required super.isFeatured,
     required super.isOrgainic,
@@ -20,22 +23,28 @@ class ProductModel extends ProductEntity {
   });
 
   factory ProductModel.formJson(Map<String, dynamic> json) {
+    // First, parse the reviews
+    final parsedReviews =
+        (json['reviews'] as List)
+            .map((review) => ReviewModel.fromJson(review))
+            .toList();
+
+    // Then pass to getAverageRating
+    final averageRating = getAverageRating(parsedReviews);
+
     return ProductModel(
+      avergeRating: averageRating,
       name: json['name'],
       description: json['description'],
       price: json['price'],
       code: json['code'],
-      // imageFile: json['imageFile'],
-      isFeatured: json['isFeatured'],
+      isFeatured: json['isFeatured'].toString(),
       isOrgainic: json['isOrgainic'] ?? false,
       imageUrl: json['imageUrl'],
       monthExpires: json['monthExpires'],
       numberOfCalories: json['numberOfCalories'],
       unitAmount: json['unitAmount'],
-      reviews:
-          (json['reviews'] as List)
-              .map((review) => ReviewModel.fromJson(review))
-              .toList(),
+      reviews: parsedReviews,
       sellingcount: int.tryParse(json['sellingCount'].toString()) ?? 0,
     );
   }

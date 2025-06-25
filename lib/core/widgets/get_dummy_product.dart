@@ -2,6 +2,7 @@ import 'package:ecommerce/core/entites/product_entity.dart';
 
 ProductEntity getDummyProduct() {
   return ProductEntity(
+    avergeRating: 4.5,
     name: 'mahmoud ahmed',
     description: 'this is a dummy product',
     price: 100.0,
