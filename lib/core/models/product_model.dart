@@ -8,7 +8,7 @@ class ProductModel extends ProductEntity {
     required super.description,
     required super.price,
     required super.code,
-    required super.imageFile,
+    // required super.imageFile,
     required super.isFeatured,
     required super.isOrgainic,
     super.imageUrl,
@@ -25,15 +25,18 @@ class ProductModel extends ProductEntity {
       description: json['description'],
       price: json['price'],
       code: json['code'],
-      imageFile: json['imageFile'],
+      // imageFile: json['imageFile'],
       isFeatured: json['isFeatured'],
-      isOrgainic: json['isOrgainic'],
+      isOrgainic: json['isOrgainic'] ?? false,
       imageUrl: json['imageUrl'],
       monthExpires: json['monthExpires'],
       numberOfCalories: json['numberOfCalories'],
       unitAmount: json['unitAmount'],
-      reviews: json['reviews'].map((review) => ReviewModel.fromJson(review)),
-      sellingcount: json['sellingcount'],
+      reviews:
+          (json['reviews'] as List)
+              .map((review) => ReviewModel.fromJson(review))
+              .toList(),
+      sellingcount: json['sellingcount'] ?? 0,
     );
   }
 

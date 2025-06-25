@@ -10,26 +10,24 @@ class ProductRepoImpl implements ProductRepo {
   final DatabaseService databaseService;
 
   ProductRepoImpl({required this.databaseService});
+
   @override
   Future<Either<Faileur, List<ProductEntity>>> getBestSellingProducts() async {
     try {
-      var data =
-          await databaseService.getDataList(
-                path: BackendPoints.getPorducts,
-                query: {
-                  'limit': 10,
-                  'orderBy': 'sellingcount',
-                  'descending': true,
-                },
-              )
-              as Map<String, dynamic>;
+      final List<Map<String, dynamic>> data = await databaseService.getDataList(
+        path: BackendPoints.getPorducts,
+        query: {'limit': 10, 'orderBy': 'sellingcount', 'descending': true},
+      );
 
       List<ProductModel> products =
-          data.values.map((e) => ProductModel.formJson(e)).toList();
+          data.map((e) => ProductModel.formJson(e)).toList();
+
       return right(products);
     } on Exception catch (e) {
       return left(
-        ServerFaileur(message: 'Failed to fetch products: ${e.toString()}'),
+        ServerFaileur(
+          message: 'Failed to fetch best selling products: ${e.toString()}',
+        ),
       );
     }
   }
@@ -37,11 +35,13 @@ class ProductRepoImpl implements ProductRepo {
   @override
   Future<Either<Faileur, List<ProductEntity>>> getProducts() async {
     try {
-      var data =
-          await databaseService.getDataList(path: BackendPoints.getPorducts)
-              as Map<String, dynamic>;
+      final List<Map<String, dynamic>> data = await databaseService.getDataList(
+        path: BackendPoints.getPorducts,
+      );
+
       List<ProductModel> products =
-          data.values.map((e) => ProductModel.formJson(e)).toList();
+          data.map((e) => ProductModel.formJson(e)).toList();
+
       return right(products);
     } on Exception catch (e) {
       return left(
