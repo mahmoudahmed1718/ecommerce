@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/entites/product_entity.dart';
+import 'package:ecommerce/core/utils/app_images.dart';
 
 ProductEntity getDummyProduct() {
   return ProductEntity(
@@ -7,7 +8,7 @@ ProductEntity getDummyProduct() {
     description: 'this is a dummy product',
     price: 100.0,
     code: '12345',
-    imageUrl: 'https://example.com/image.jpg',
+    imageUrl: null,
     isFeatured: 'yes',
     monthExpires: 12,
     isOrgainic: true,

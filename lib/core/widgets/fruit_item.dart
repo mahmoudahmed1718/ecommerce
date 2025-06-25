@@ -29,10 +29,12 @@ class FruitItem extends StatelessWidget {
               const SizedBox(height: 12),
 
               /// Fruit Image
-              Image.asset(
-                Assets.imagesWatermelonTest,
-                height: 100,
-                fit: BoxFit.contain,
+              Flexible(
+                child: Image.network(
+                  product.imageUrl!,
+                  height: 100,
+                  fit: BoxFit.contain,
+                ),
               ),
 
               const Spacer(),
@@ -49,15 +51,15 @@ class FruitItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('بطيخ', style: TextStyles.semiBold16),
+                        Text(product.name, style: TextStyles.semiBold16),
                         Text(
-                          '30 جنيه',
+                          product.price.toString(),
                           style: TextStyles.bold16.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
                         ),
                         Text(
-                          '/ الكيلو',
+                          '${product.unitAmount.toString()}/g',
                           style: TextStyles.regular13.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
