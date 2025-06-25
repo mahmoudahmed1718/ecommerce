@@ -1,7 +1,7 @@
 import 'package:ecommerce/feature/auth/presentation/manger/cubit/cubit/sign_in_cubit.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/custom_modal_progress_hud.dart';
 import 'package:ecommerce/feature/auth/presentation/view/widgets/sign_in_view_body.dart';
-import 'package:ecommerce/feature/home/presentation/views/home_view.dart';
+import 'package:ecommerce/feature/home/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +23,7 @@ class SignInViewBodyBlocConsumer extends StatelessWidget {
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
+          Navigator.pushReplacementNamed(context, MainView.routeName);
           // Navigator.pushReplacementNamed(context, '/home');
         }
       },
