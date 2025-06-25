@@ -37,4 +37,11 @@ class FirestoreService implements DatabaseService {
         await FirebaseFirestore.instance.collection(path).doc(documentId).get();
     return doc.exists;
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> getDataList({required String path}) async {
+    final snapshot = await FirebaseFirestore.instance.collection(path).get();
+
+    return snapshot.docs.map((doc) => doc.data()).toList();
+  }
 }

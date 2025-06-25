@@ -12,6 +12,7 @@ abstract class DatabaseService {
     required String path,
     required String documentId,
   });
+  Future<List<Map<String, dynamic>>> getDataList({required String path});
   Future<bool> checkUserExists({
     required String path,
     required String documentId,
