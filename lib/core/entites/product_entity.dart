@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:ecommerce/core/entites/review_entity.dart';
 
-class AddProductInputEntity {
+class ProductEntity {
   final String name;
   final String description;
   final double price;
@@ -17,7 +17,7 @@ class AddProductInputEntity {
   final num avergeRating = 0;
   final num rangeCount = 0;
   final List<ReviewEntity> reviews;
-  AddProductInputEntity({
+  ProductEntity({
     required this.reviews,
     required this.name,
     required this.description,

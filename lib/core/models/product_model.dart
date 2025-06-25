@@ -1,8 +1,8 @@
 import 'package:ecommerce/core/entites/product_entity.dart';
 import 'package:ecommerce/core/models/review_model.dart';
 
-class AddProductInputModel extends AddProductInputEntity {
-  AddProductInputModel({
+class ProductModel extends ProductEntity {
+  ProductModel({
     required super.name,
     required super.description,
     required super.price,
@@ -17,8 +17,8 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.reviews,
   });
 
-  factory AddProductInputModel.fromEntity(AddProductInputEntity entity) {
-    return AddProductInputModel(
+  factory ProductModel.fromEntity(ProductEntity entity) {
+    return ProductModel(
       name: entity.name,
       description: entity.description,
       price: entity.price,
