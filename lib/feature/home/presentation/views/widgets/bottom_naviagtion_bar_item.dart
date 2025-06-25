@@ -15,23 +15,11 @@ class BottomNavigationbarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      transitionBuilder: (child, animation) {
-        return ScaleTransition(scale: animation, child: child);
-        // You can use FadeTransition, SlideTransition, or combine multiple
-      },
-      child:
-          selected
-              ? ActiveItem(
-                key: const ValueKey('active'), // Important for switching
-                image: navigationBarItemEntity.activeIcon,
-                text: navigationBarItemEntity.title,
-              )
-              : InActiveItem(
-                key: const ValueKey('inactive'),
-                image: navigationBarItemEntity.inactiveIcon,
-              ),
-    );
+    return selected
+        ? ActiveItem(
+          image: navigationBarItemEntity.activeIcon,
+          text: navigationBarItemEntity.title,
+        )
+        : InActiveItem(image: navigationBarItemEntity.inactiveIcon);
   }
 }
