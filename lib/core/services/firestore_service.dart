@@ -43,6 +43,7 @@ class FirestoreService implements DatabaseService {
     required String path,
     Map<String, dynamic>? query,
   }) async {
+    // ignore: unused_local_variable
     var snapshot = await FirebaseFirestore.instance.collection(path).get();
     Query<Map<String, dynamic>> data = FirebaseFirestore.instance.collection(
       path,

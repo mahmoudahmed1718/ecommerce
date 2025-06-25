@@ -1,5 +1,4 @@
 import 'package:ecommerce/core/entites/product_entity.dart';
-import 'package:ecommerce/core/utils/app_images.dart';
 
 ProductEntity getDummyProduct() {
   return ProductEntity(

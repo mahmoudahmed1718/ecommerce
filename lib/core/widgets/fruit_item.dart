@@ -1,7 +1,7 @@
 import 'package:ecommerce/core/entites/product_entity.dart';
+import 'package:ecommerce/core/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
-import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
 
 class FruitItem extends StatelessWidget {
@@ -30,11 +30,14 @@ class FruitItem extends StatelessWidget {
 
               /// Fruit Image
               Flexible(
-                child: Image.network(
-                  product.imageUrl!,
-                  height: 100,
-                  fit: BoxFit.contain,
-                ),
+                child:
+                    product.imageUrl != null
+                        ? CustomNetworkImage(imageUrl: product.imageUrl!)
+                        : Container(
+                          height: 100,
+                          width: 100,
+                          color: Colors.grey,
+                        ),
               ),
 
               const Spacer(),
