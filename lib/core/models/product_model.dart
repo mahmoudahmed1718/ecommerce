@@ -2,6 +2,7 @@ import 'package:ecommerce/core/entites/product_entity.dart';
 import 'package:ecommerce/core/models/review_model.dart';
 
 class ProductModel extends ProductEntity {
+  final int sellingcount;
   ProductModel({
     required super.name,
     required super.description,
@@ -15,27 +16,27 @@ class ProductModel extends ProductEntity {
     required super.numberOfCalories,
     required super.unitAmount,
     required super.reviews,
+    required this.sellingcount,
   });
 
-  factory ProductModel.fromEntity(ProductEntity entity) {
+  factory ProductModel.formJson(Map<String, dynamic> json) {
     return ProductModel(
-      name: entity.name,
-      description: entity.description,
-      price: entity.price,
-      code: entity.code,
-      imageFile: entity.imageFile,
-      isFeatured: entity.isFeatured,
-      imageUrl: entity.imageUrl,
-      monthExpires: entity.monthExpires,
-      numberOfCalories: entity.numberOfCalories,
-      unitAmount: entity.unitAmount,
-      isOrgainic: entity.isOrgainic,
-      reviews:
-          entity.reviews
-              .map((review) => ReviewModel.fromEntity(review))
-              .toList(),
+      name: json['name'],
+      description: json['description'],
+      price: json['price'],
+      code: json['code'],
+      imageFile: json['imageFile'],
+      isFeatured: json['isFeatured'],
+      isOrgainic: json['isOrgainic'],
+      imageUrl: json['imageUrl'],
+      monthExpires: json['monthExpires'],
+      numberOfCalories: json['numberOfCalories'],
+      unitAmount: json['unitAmount'],
+      reviews: json['reviews'].map((review) => ReviewModel.fromJson(review)),
+      sellingcount: json['sellingcount'],
     );
   }
+
   toJson() {
     return {
       'name': name,
@@ -47,6 +48,7 @@ class ProductModel extends ProductEntity {
       'monthExpires': monthExpires,
       'numberOfCalories': numberOfCalories,
       'unitAmount': unitAmount,
+      'sellingcount': sellingcount,
       'isOrganic': isOrgainic,
       'avergeRating': avergeRating,
       'rangeCount': rangeCount,
