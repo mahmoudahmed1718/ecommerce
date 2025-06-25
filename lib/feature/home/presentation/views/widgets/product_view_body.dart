@@ -4,6 +4,7 @@ import 'package:ecommerce/core/widgets/best_selling_header.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/best_selling_view_bloc_builder.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_search_text_field.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/product_view_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +38,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                 CustomSearchTextField(),
                 const SizedBox(height: 12),
 
-                BestSellingHeader(),
+                // ProductViewHeader(),
                 const SizedBox(height: 12),
               ],
             ),
