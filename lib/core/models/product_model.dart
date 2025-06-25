@@ -36,7 +36,7 @@ class ProductModel extends ProductEntity {
           (json['reviews'] as List)
               .map((review) => ReviewModel.fromJson(review))
               .toList(),
-      sellingcount: json['sellingcount'] ?? 0,
+      sellingcount: int.tryParse(json['sellingCount'].toString()) ?? 0,
     );
   }
 
