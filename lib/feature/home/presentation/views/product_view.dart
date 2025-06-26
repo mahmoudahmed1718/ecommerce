@@ -10,7 +10,6 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Product View')),
       body: BlocProvider(
         create:
             (context) => ProductsCubit(productRepo: getIt.get<ProductRepo>()),
