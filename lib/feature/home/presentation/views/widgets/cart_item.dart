@@ -1,6 +1,6 @@
 import 'package:ecommerce/core/utils/app_colors.dart';
-import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
+import 'package:ecommerce/core/widgets/custom_network_image.dart';
 import 'package:ecommerce/feature/home/domain/entites/cart_item_entity.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/cart_item_action_buttons.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,10 @@ class CartItem extends StatelessWidget {
               width: 73,
               height: 92,
               color: Color(0XFFF3F5F7),
-              child: Image.asset(Assets.imagesAppIcon),
+              child: CustomNetworkImage(
+                imageUrl: cartItemEntity.product.imageUrl!,
+                size: 16,
+              ),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -29,7 +32,7 @@ class CartItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('Fruit Name'),
+                      Text(cartItemEntity.product.name),
                       Spacer(),
                       GestureDetector(
                         onTap: () {},
@@ -41,7 +44,7 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        '3 kg',
+                        '${cartItemEntity.calculateTotalWeight()} kg',
                         style: TextStyles.bold13.copyWith(
                           color: AppColors.secondaryColor,
                         ),
@@ -54,7 +57,7 @@ class CartItem extends StatelessWidget {
                       CartItemActionButtons(),
                       Spacer(),
                       Text(
-                        '100 EGP',
+                        '${cartItemEntity.calculateTotalPrice()} EGP',
                         style: TextStyles.bold13.copyWith(
                           color: AppColors.secondaryColor,
                         ),
