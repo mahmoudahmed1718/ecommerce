@@ -38,7 +38,9 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                 CustomSearchTextField(),
                 const SizedBox(height: 12),
 
-                // ProductViewHeader(),
+                ProductViewHeader(
+                  productsLength: context.watch<ProductsCubit>().productsLength,
+                ),
                 const SizedBox(height: 12),
               ],
             ),

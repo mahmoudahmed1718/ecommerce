@@ -18,5 +18,5 @@ ProductEntity getDummyProduct() {
 }
 
 List<ProductEntity> getDummyProductsList() {
-  return List.generate(10, (index) => getDummyProduct());
+  return List.generate(6, (index) => getDummyProduct());
 }

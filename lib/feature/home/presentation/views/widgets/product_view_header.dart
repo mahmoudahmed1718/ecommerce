@@ -14,6 +14,11 @@ class ProductViewHeader extends StatelessWidget {
           style: TextStyles.bold16,
         ),
         const Spacer(),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.filter_list),
+          tooltip: 'Sort',
+        ),
       ],
     );
   }
