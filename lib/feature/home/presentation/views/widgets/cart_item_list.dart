@@ -6,7 +6,7 @@ class CartItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      itemCount: 10,
+      itemCount: 3,
       separatorBuilder:
           (context, index) => Divider(height: 22, color: Color(0XFFF1F1F5)),
       itemBuilder: (context, index) {
