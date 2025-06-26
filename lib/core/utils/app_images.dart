@@ -46,6 +46,14 @@ class Assets {
   /// assets/images/icon.jpg
   static const String imagesIcon = "assets/images/icon.jpg";
 
+  /// Assets for imagesImageFeatureArabic
+  /// assets/images/imageFeature_arabic.png
+  static const String imagesImageFeatureArabic = "assets/images/imageFeature_arabic.png";
+
+  /// Assets for imagesImageFeatureEnglish
+  /// assets/images/imageFeature_english.png
+  static const String imagesImageFeatureEnglish = "assets/images/imageFeature_english.png";
+
   /// Assets for imagesLocation
   /// assets/images/location.svg
   static const String imagesLocation = "assets/images/location.svg";

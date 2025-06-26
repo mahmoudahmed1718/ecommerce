@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/utils/app_images.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/featured_item_button.dart';
@@ -19,27 +20,43 @@ class FeaturedItem extends StatelessWidget {
           aspectRatio: 342 / 128,
           child: Stack(
             children: [
-              Positioned(
-                left: itemWidth * 0.4,
-                top: 0,
-                bottom: 0,
-                right: 0,
+              context.locale.languageCode == 'en'
+                  ? Positioned(
+                    left: itemWidth * 0.4,
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
 
-                child: Image.asset(
-                  Assets.imagesWatermelonTest,
-                  fit: BoxFit.fill,
-                ),
-              ),
+                    child: Image.asset(
+                      Assets.imagesWatermelonTest,
+                      fit: BoxFit.fill,
+                    ),
+                  )
+                  : Positioned(
+                    right: itemWidth * 0.4,
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+
+                    child: Image.asset(
+                      Assets.imagesWatermelonTest,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
               Container(
                 height: itemWidth * 0.4,
                 width: itemWidth * 0.5,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: svg.Svg(
-                      Assets.imagesFeaturedItemBackground,
-                      scale: 0.1,
-                    ),
+
+                    image:
+                        context.locale.languageCode == 'ar'
+                            ? const AssetImage(Assets.imagesImageFeatureArabic)
+                            : const AssetImage(
+                              Assets.imagesImageFeatureEnglish,
+                            ),
+                    scale: 0.1,
                   ),
                 ),
               ),
