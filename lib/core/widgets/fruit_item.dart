@@ -8,10 +8,14 @@ class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.product});
   final ProductEntity product;
   @override
+  @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final itemWidth = screenWidth / 2.4; // Responsive width
+    final imageSize = itemWidth * 0.8;
+
     return Container(
-      width: 120,
-      height: 180,
+      width: itemWidth,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.grey[200],
@@ -19,36 +23,39 @@ class FruitItem extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          /// Heart Icon (top-right)
-          Positioned(top: 0, right: 0, child: Icon(Icons.favorite_border)),
+          // Heart Icon
+          const Positioned(
+            top: 0,
+            right: 0,
+            child: Icon(Icons.favorite_border),
+          ),
 
-          /// Main Column Layout
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
 
-              /// Fruit Image
+              // Responsive Image
               Flexible(
                 child:
                     product.imageUrl != null
-                        ? CustomNetworkImage(imageUrl: product.imageUrl!)
+                        ? CustomNetworkImage(
+                          imageUrl: product.imageUrl!,
+                          size: imageSize,
+                        )
                         : Container(
-                          height: 100,
-                          width: 100,
+                          height: imageSize,
+                          width: imageSize,
                           color: Colors.grey,
                         ),
               ),
 
               const Spacer(),
 
-              /// Bottom Row with Button and Text
+              // Price and Add Button
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  /// + Button
-
-                  /// Text Column (Right-Aligned)
                   Directionality(
                     textDirection: TextDirection.rtl,
                     child: Column(
@@ -56,13 +63,13 @@ class FruitItem extends StatelessWidget {
                       children: [
                         Text(product.name, style: TextStyles.semiBold16),
                         Text(
-                          product.price.toString(),
+                          '${product.price}',
                           style: TextStyles.bold16.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
                         ),
                         Text(
-                          '${product.unitAmount.toString()}/g',
+                          '${product.unitAmount}/g',
                           style: TextStyles.regular13.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),
@@ -71,7 +78,7 @@ class FruitItem extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 24,
                     backgroundColor: Colors.green,
                     child: Icon(Icons.add, color: Colors.white, size: 20),
