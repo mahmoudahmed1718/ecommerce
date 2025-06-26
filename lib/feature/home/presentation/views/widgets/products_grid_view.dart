@@ -2,8 +2,8 @@ import 'package:ecommerce/core/entites/product_entity.dart';
 import 'package:ecommerce/core/widgets/fruit_item.dart';
 import 'package:flutter/material.dart';
 
-class BestSellingGridView extends StatelessWidget {
-  const BestSellingGridView({super.key, required this.products});
+class PrductsGridView extends StatelessWidget {
+  const PrductsGridView({super.key, required this.products});
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {

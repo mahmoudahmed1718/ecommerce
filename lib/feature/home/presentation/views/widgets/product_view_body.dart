@@ -1,6 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/cubits/cubit/products_cubit_cubit.dart';
-import 'package:ecommerce/feature/home/presentation/views/widgets/best_selling_view_bloc_builder.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/products_view_bloc_builder.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/product_view_header.dart';
@@ -44,7 +44,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
               ],
             ),
           ),
-          BestSellingGridViewBlocBuilder(),
+          ProductsGridViewBlocBuilder(),
         ],
       ),
     );
