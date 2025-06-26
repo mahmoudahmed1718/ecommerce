@@ -6,6 +6,7 @@ AppBar buildAppBar(
   BuildContext context, {
   required String title,
   bool isbackButton = true,
+  bool isNotification = true,
 }) {
   return AppBar(
     leading: Visibility(
@@ -21,7 +22,7 @@ AppBar buildAppBar(
     actions: [
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Notficationwidget(),
+        child: Visibility(visible: isNotification, child: Notficationwidget()),
       ),
     ],
     backgroundColor: Colors.transparent,

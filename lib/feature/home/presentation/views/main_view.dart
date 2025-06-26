@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/services/firebase_auth_services.dart';
+import 'package:ecommerce/feature/home/presentation/views/cart_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/product_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/home_view.dart';
@@ -56,6 +57,10 @@ class _MainViewState extends State<MainView> {
   }
 
   Widget currentview() {
-    return [const HomeView(), const ProductView()][currentViewIndex];
+    return [
+      const HomeView(),
+      const ProductView(),
+      CartView(),
+    ][currentViewIndex];
   }
 }
