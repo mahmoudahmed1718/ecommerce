@@ -2,7 +2,6 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/core/cubits/cubit/products_cubit_cubit.dart';
 import 'package:ecommerce/core/widgets/build_app_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/products_view_bloc_builder.dart';
-import 'package:ecommerce/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/product_view_header.dart';
 import 'package:flutter/material.dart';
