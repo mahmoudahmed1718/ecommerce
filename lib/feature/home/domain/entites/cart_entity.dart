@@ -8,4 +8,8 @@ class CartEntity {
   addCartItem(CartItemEntity cartItem) {
     carts.add(cartItem);
   }
+
+  removeCartItem(CartItemEntity cartItem) {
+    carts.remove(cartItem);
+  }
 }
