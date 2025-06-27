@@ -17,11 +17,11 @@ class CartCubit extends Cubit<CartState> {
     } else {
       cartEntity.addCartItem(cartItem);
     }
-    emit(CartItemAdd());
+    emit(CartProductAdd());
   }
 
   void removeCartItem(CartItemEntity cartItem) {
     cartEntity.removeCartItem(cartItem);
-    emit(CartItemRemove());
+    emit(CartProductRemove());
   }
 }

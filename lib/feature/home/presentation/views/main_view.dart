@@ -5,7 +5,7 @@ import 'package:ecommerce/feature/home/presentation/views/cart_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/product_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/home_view.dart';
-import 'package:ecommerce/feature/home/presentation/views/widgets/main_view_body.dart';
+import 'package:ecommerce/feature/home/presentation/views/widgets/main_view_body_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,7 +56,9 @@ class _MainViewState extends State<MainView> {
             child: Text('Logout', style: TextStyle(color: Colors.red)),
           ),
         ),
-        body: SafeArea(child: MainViewBody(currentViewIndex: currentViewIndex)),
+        body: SafeArea(
+          child: MainViewBodyBlocListener(currentViewIndex: currentViewIndex),
+        ),
       ),
     );
   }
