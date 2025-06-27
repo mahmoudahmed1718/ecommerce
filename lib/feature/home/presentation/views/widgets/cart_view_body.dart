@@ -32,7 +32,9 @@ class CartViewBody extends StatelessWidget {
                 ],
               ),
             ),
-            CartItemList(cartItmes: []),
+            CartItemList(
+              cartItmes: context.watch<CartCubit>().cartEntity.carts,
+            ),
           ],
         ),
         Positioned(
@@ -40,7 +42,7 @@ class CartViewBody extends StatelessWidget {
           left: 16,
           right: 16,
           child: Visibility(
-            visible: true,
+            visible: context.watch<CartCubit>().cartEntity.carts.isNotEmpty,
             child: CustomButton(
               onpressed: () {},
               text: 'pay ${context.watch<CartCubit>().cartEntity.totalPrice()}',
