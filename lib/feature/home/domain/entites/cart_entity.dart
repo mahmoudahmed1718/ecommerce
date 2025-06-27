@@ -6,6 +6,15 @@ class CartEntity {
 
   CartEntity({required this.carts});
 
+  totalPrice() {
+    double totalPrice = 0;
+
+    for (var cartItem in carts) {
+      totalPrice += cartItem.calculateTotalPrice();
+    }
+    return totalPrice;
+  }
+
   addCartItem(CartItemEntity cartItem) {
     carts.add(cartItem);
   }
