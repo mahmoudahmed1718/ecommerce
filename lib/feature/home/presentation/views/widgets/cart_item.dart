@@ -60,7 +60,7 @@ class CartItem extends StatelessWidget {
 
                   Row(
                     children: [
-                      CartItemActionButtons(),
+                      CartItemActionButtons(cartItemEntity: cartItemEntity),
                       Spacer(),
                       Text(
                         '${cartItemEntity.calculateTotalPrice()} EGP',
