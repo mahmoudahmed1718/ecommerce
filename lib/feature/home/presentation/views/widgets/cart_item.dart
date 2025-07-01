@@ -16,6 +16,14 @@ class CartItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: BlocBuilder<CartItemCubit, CartItemState>(
+        buildWhen: (previous, current) {
+          if (current is CartItemUpdated) {
+            if (current.cartItemEntity == cartItemEntity) {
+              return true;
+            }
+          }
+          return false;
+        },
         builder: (context, state) {
           return IntrinsicHeight(
             child: Row(
