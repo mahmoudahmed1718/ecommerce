@@ -2,6 +2,7 @@ import 'package:ecommerce/core/entites/product_entity.dart';
 import 'package:ecommerce/core/helper/get_average_rating.dart';
 import 'package:ecommerce/core/models/review_model.dart';
 
+// ignore: must_be_immutable
 class ProductModel extends ProductEntity {
   final int sellingcount;
   ProductModel({
