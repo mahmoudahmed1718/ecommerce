@@ -2,8 +2,10 @@ import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/core/widgets/custom_network_image.dart';
 import 'package:ecommerce/feature/home/domain/entites/cart_item_entity.dart';
+import 'package:ecommerce/feature/home/presentation/manger/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/cart_item_action_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartItemEntity});
@@ -35,7 +37,11 @@ class CartItem extends StatelessWidget {
                       Text(cartItemEntity.product.name),
                       Spacer(),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.read<CartCubit>().removeCartItem(
+                            cartItemEntity,
+                          );
+                        },
                         child: Icon(Icons.delete, color: Colors.red),
                       ),
                     ],
