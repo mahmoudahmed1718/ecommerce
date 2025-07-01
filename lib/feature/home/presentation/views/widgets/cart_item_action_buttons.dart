@@ -1,8 +1,10 @@
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/feature/home/domain/entites/cart_item_entity.dart';
+import 'package:ecommerce/feature/home/presentation/manger/cart_item_cubit/cart_item_cubit.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/cart_item_action_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartItemActionButtons extends StatelessWidget {
   const CartItemActionButtons({super.key, required this.cartItemEntity});
@@ -18,6 +20,7 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.add,
           onTap: () {
             cartItemEntity.increaseCount();
+            context.read<CartItemCubit>().updateCartItem(cartItemEntity);
           },
         ),
         const SizedBox(width: 16),
@@ -30,6 +33,7 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.remove,
           onTap: () {
             cartItemEntity.decreaseCount();
+            context.read<CartItemCubit>().updateCartItem(cartItemEntity);
           },
         ),
       ],
