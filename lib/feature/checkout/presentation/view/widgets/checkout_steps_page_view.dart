@@ -9,11 +9,16 @@ class CheckoutStepsPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      physics: NeverScrollableScrollPhysics(),
       controller: pageController,
       itemBuilder: (context, index) {
         return SizedBox();
       },
-      itemCount: getSteps().length,
+      itemCount: getPages().length,
     );
+  }
+
+  List<Widget> getPages() {
+    return [SizedBox(), SizedBox(), SizedBox(), SizedBox()];
   }
 }
