@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class InActiveStepItem extends StatelessWidget {
   const InActiveStepItem({super.key, required this.text, required this.index});
   final String text;
-  final int index;
+  final String index;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,7 +13,7 @@ class InActiveStepItem extends StatelessWidget {
         CircleAvatar(
           radius: 10,
           backgroundColor: Color(0XFFF2F3F3),
-          child: Text('$index', style: TextStyles.semiBold13),
+          child: Text(index, style: TextStyles.semiBold13),
         ),
         SizedBox(width: 4),
         Text(
