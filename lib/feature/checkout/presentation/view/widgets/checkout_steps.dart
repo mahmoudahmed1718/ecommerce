@@ -6,10 +6,13 @@ class CheckoutSteps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: List.generate(
-        4,
-        (index) => Expanded(child: const ActiveStepItem()),
-      ),
+      children: List.generate(getSteps().length, (index) {
+        return Expanded(child: ActiveStepItem(text: getSteps()[index]));
+      }),
     );
+  }
+
+  List<String> getSteps() {
+    return ['payment', 'shipping', 'confirm', 'done'];
   }
 }

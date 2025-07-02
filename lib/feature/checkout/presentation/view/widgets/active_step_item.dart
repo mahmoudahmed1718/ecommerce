@@ -3,7 +3,8 @@ import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:flutter/material.dart';
 
 class ActiveStepItem extends StatelessWidget {
-  const ActiveStepItem({super.key});
+  const ActiveStepItem({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,7 +17,7 @@ class ActiveStepItem extends StatelessWidget {
         ),
         SizedBox(width: 4),
         Text(
-          'payment',
+          text,
           style: TextStyles.bold13.copyWith(color: AppColors.primaryColor),
         ),
       ],
