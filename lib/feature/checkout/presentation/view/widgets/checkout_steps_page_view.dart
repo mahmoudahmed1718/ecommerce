@@ -1,4 +1,4 @@
-import 'package:ecommerce/feature/checkout/presentation/view/widgets/checkout_steps.dart';
+import 'package:ecommerce/feature/checkout/presentation/view/widgets/shipping_section.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
@@ -12,13 +12,13 @@ class CheckoutStepsPageView extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       controller: pageController,
       itemBuilder: (context, index) {
-        return SizedBox();
+        return getPages()[index];
       },
       itemCount: getPages().length,
     );
   }
 
   List<Widget> getPages() {
-    return [SizedBox(), SizedBox(), SizedBox(), SizedBox()];
+    return [ShippingSection(), SizedBox(), SizedBox(), SizedBox()];
   }
 }
