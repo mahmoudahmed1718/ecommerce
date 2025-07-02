@@ -17,8 +17,8 @@ class CheckoutSteps extends StatelessWidget {
       }),
     );
   }
+}
 
-  List<String> getSteps() {
-    return ['payment', 'shipping', 'confirm', 'done'];
-  }
+List<String> getSteps() {
+  return ['shipping', 'address', 'payment', 'revision'];
 }
