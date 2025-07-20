@@ -1,7 +1,8 @@
 import 'package:ecommerce/core/widgets/custom_button.dart';
-import 'package:ecommerce/feature/checkout/presentation/view/widgets/checkout_steps.dart';
-import 'package:ecommerce/feature/checkout/presentation/view/widgets/checkout_steps_page_view.dart';
+import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
+
+import 'checkout_steps_page_view.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -12,6 +13,7 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+
   @override
   void initState() {
     pageController = PageController();
@@ -30,14 +32,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          SizedBox(height: 20),
-          CheckoutSteps(),
+          const SizedBox(height: 20),
+          const CheckoutSteps(),
           Expanded(
             child: CheckoutStepsPageView(pageController: pageController),
           ),
-
-          CustomButton(onpressed: () {}, text: 'next'),
-          SizedBox(height: 32),
+          CustomButton(onpressed: () {}, text: 'التالي'),
+          const SizedBox(height: 32),
         ],
       ),
     );

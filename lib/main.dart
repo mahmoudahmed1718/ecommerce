@@ -23,7 +23,7 @@ void main() async {
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
       path:
-          'assets/translation', // <-- change the path of the translation files
+          'assets/translation',
       fallbackLocale: Locale('ar'),
       assetLoader: CodegenLoader(),
       child: MyApp(),

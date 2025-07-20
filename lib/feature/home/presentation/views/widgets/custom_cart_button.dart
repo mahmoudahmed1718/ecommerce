@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/widgets/custom_button.dart';
-import 'package:ecommerce/feature/checkout/presentation/view/checkout_view.dart';
+
+import 'package:ecommerce/feature/checkout/presentation/views/checkout_view.dart';
 import 'package:ecommerce/feature/home/presentation/manger/cart_cubit/cart_cubit.dart';
 import 'package:ecommerce/feature/home/presentation/manger/cart_item_cubit/cart_item_cubit.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,8 @@
 import 'package:ecommerce/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:ecommerce/feature/auth/presentation/view/sign_up_view.dart';
 import 'package:ecommerce/feature/best_selling_fruits/presentation/views/best_selling_fruits_view.dart';
-import 'package:ecommerce/feature/checkout/presentation/view/checkout_view.dart';
+
+import 'package:ecommerce/feature/checkout/presentation/views/checkout_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/main_view.dart';
 import 'package:ecommerce/feature/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:ecommerce/feature/splash/presentation/views/splash_view.dart';
