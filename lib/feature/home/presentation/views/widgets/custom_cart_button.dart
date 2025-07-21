@@ -18,7 +18,7 @@ class CustomCartButton extends StatelessWidget {
             Navigator.pushNamed(
               context,
               CheckoutView.routeName,
-              arguments: context.read<CartCubit>().cartEntity.carts,
+              arguments: context.read<CartCubit>().cartEntity,
             );
           },
           text: 'pay ${context.watch<CartCubit>().cartEntity.totalPrice()}',

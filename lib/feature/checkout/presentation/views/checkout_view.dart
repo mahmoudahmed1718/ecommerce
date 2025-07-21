@@ -1,18 +1,24 @@
 import 'package:ecommerce/core/widgets/build_app_bar.dart';
+import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_view_body.dart';
-import 'package:ecommerce/feature/home/domain/entites/cart_item_entity.dart';
+import 'package:ecommerce/feature/home/domain/entites/cart_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutView extends StatelessWidget {
-  const CheckoutView({super.key, required this.cartitem});
+  const CheckoutView({super.key, required this.cartitems});
 
   static const routeName = 'checkout';
-  final List<CartItemEntity> cartitem;
+  final CartEntity cartitems;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context, title: 'الشحن', isNotification: false),
-      body: const CheckoutViewBody(),
+      body: Provider.value(
+        value: OrderEntity(cartItems: cartitems),
+
+        child: const CheckoutViewBody(),
+      ),
     );
   }
 }
