@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/widgets/custom_button.dart';
 import 'package:ecommerce/core/widgets/error_snack_bar.dart';
 import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
+import 'package:ecommerce/feature/checkout/presentation/views/manger/add_order_cubit/add_order_cubit.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -53,13 +54,17 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.fastLinearToSlowEaseIn,
                 );
-              } else {
+              } else if (currentPageIndex == 1) {
                 buildErrorSnackBar(
                   context,
                   errorMessage: 'يرجي تحديد طريقه الدفع',
                 );
+              } else {
+                var order = context.read<OrderEntity>();
+                context.read<AddOrderCubit>().addOrder(order: order);
               }
             },
+
             text: 'التالي',
           ),
           const SizedBox(height: 32),
