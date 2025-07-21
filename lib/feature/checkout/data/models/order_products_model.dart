@@ -23,4 +23,13 @@ class OrderProductsModel {
       quantity: entity.countItem,
     );
   }
+  tojson() {
+    return {
+      'name': name,
+      'imageUrl': imageUrl,
+      'code': code,
+      'price': price,
+      'quantity': quantity,
+    };
+  }
 }
