@@ -21,6 +21,7 @@ class _ShippingSectionState extends State<ShippingSection> {
           onTap: () {
             selectedIndex = 0;
             setState(() {});
+            context.read<OrderEntity>().payWithCash = true;
           },
           isSelected: selectedIndex == 0,
           title: 'الدفع عند الاستلام',
@@ -34,6 +35,7 @@ class _ShippingSectionState extends State<ShippingSection> {
           onTap: () {
             selectedIndex = 1;
             setState(() {});
+            context.read<OrderEntity>().payWithCash = false;
           },
           isSelected: selectedIndex == 1,
           title: 'الدفع اونلاين',

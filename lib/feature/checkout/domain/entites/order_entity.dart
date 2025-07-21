@@ -3,7 +3,7 @@ import 'package:ecommerce/feature/home/domain/entites/cart_entity.dart';
 
 class OrderEntity {
   final CartEntity cartItems;
-  final bool? payWithCash;
+  bool? payWithCash;
   final ShppingAddressEntity? shppingAddress;
   OrderEntity({this.payWithCash, required this.cartItems, this.shppingAddress});
 }
