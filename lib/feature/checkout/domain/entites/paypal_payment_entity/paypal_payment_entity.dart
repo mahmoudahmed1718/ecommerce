@@ -17,4 +17,11 @@ class PaypalPaymentEntity {
       itemList: ItemList.fromEntities(entity.cartItems.carts),
     );
   }
+  toJson() {
+    return {
+      'amount': amount?.toJson(),
+      'description': description,
+      'item_list': itemList?.toJson(),
+    };
+  }
 }

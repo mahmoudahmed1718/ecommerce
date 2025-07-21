@@ -1,7 +1,7 @@
 import 'package:ecommerce/core/widgets/custom_button.dart';
 import 'package:ecommerce/core/widgets/error_snack_bar.dart';
 import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
-import 'package:ecommerce/feature/checkout/presentation/views/manger/add_order_cubit/add_order_cubit.dart';
+import 'package:ecommerce/feature/checkout/domain/entites/paypal_payment_entity/paypal_payment_entity.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
@@ -74,6 +74,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _processPayment(BuildContext context) {
+    var order = context.read<OrderEntity>();
+    PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntities(
+      entity: order,
+    );
     Navigator.of(context).push(
       MaterialPageRoute(
         builder:
@@ -81,63 +85,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               sandboxMode: true,
               clientId: "",
               secretKey: "",
-              transactions: const [
-                {
-                  "amount": {
-                    "total": '70',
-                    "currency": "USD",
-                    "details": {
-                      "subtotal": '70',
-                      "shipping": '0',
-                      "shipping_discount": 0,
-                    },
-                  },
-                  "description": "The payment transaction description.",
-                  // "payment_options": {
-                  //   "allowed_payment_method":
-                  //       "INSTANT_FUNDING_SOURCE"
-                  // },
-                  "item_list": {
-                    "items": [
-                      {
-                        "name": "Apple",
-                        "quantity": 4,
-                        "price": '5',
-                        "currency": "USD",
-                      },
-                      {
-                        "name": "Pineapple",
-                        "quantity": 5,
-                        "price": '10',
-                        "currency": "USD",
-                      },
-                    ],
-
-                    // shipping address is not required though
-                    //   "shipping_address": {
-                    //     "recipient_name": "tharwat",
-                    //     "line1": "Alexandria",
-                    //     "line2": "",
-                    //     "city": "Alexandria",
-                    //     "country_code": "EG",
-                    //     "postal_code": "21505",
-                    //     "phone": "+00000000",
-                    //     "state": "Alexandria"
-                    //  },
-                  },
-                },
-              ],
+              transactions: [paypalPaymentEntity.toJson()],
               note: "Contact us for any questions on your order.",
-              onSuccess: (Map params) async {
-                print("onSuccess: $params");
-              },
+              onSuccess: (Map params) async {},
               onError: (error) {
-                print("onError: $error");
                 Navigator.pop(context);
               },
-              onCancel: () {
-                print('cancelled:');
-              },
+              onCancel: () {},
             ),
       ),
     );
