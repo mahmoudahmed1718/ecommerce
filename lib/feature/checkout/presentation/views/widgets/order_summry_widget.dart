@@ -1,6 +1,8 @@
 import 'package:ecommerce/core/utils/app_text_styels.dart';
+import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OrderSummryWidget extends StatelessWidget {
   const OrderSummryWidget({super.key});
@@ -21,7 +23,7 @@ class OrderSummryWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '300 جنية',
+                context.read<OrderEntity>().cartItems.totalPrice().toString(),
                 textAlign: TextAlign.right,
                 style: TextStyles.semiBold16,
               ),
@@ -53,7 +55,11 @@ class OrderSummryWidget extends StatelessWidget {
             children: [
               const Text('الكلي', style: TextStyles.bold16),
               const Spacer(),
-              Text('330 جنية', style: TextStyles.bold16),
+              Text(
+                (context.read<OrderEntity>().cartItems.totalPrice() + 30)
+                    .toString(),
+                style: TextStyles.bold16,
+              ),
             ],
           ),
         ],
