@@ -1,19 +1,22 @@
+import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
+
 class Details {
-	String? subtotal;
-	String? shipping;
-	int? shippingDiscount;
+  String? subtotal;
+  String? shipping;
+  int? shippingDiscount;
 
-	Details({this.subtotal, this.shipping, this.shippingDiscount});
+  Details({this.subtotal, this.shipping, this.shippingDiscount});
 
-	factory Details.fromJson(Map<String, dynamic> json) => Details(
-				subtotal: json['subtotal'] as String?,
-				shipping: json['shipping'] as String?,
-				shippingDiscount: json['shipping_discount'] as int?,
-			);
-
-	Map<String, dynamic> toJson() => {
-				'subtotal': subtotal,
-				'shipping': shipping,
-				'shipping_discount': shippingDiscount,
-			};
+  Map<String, dynamic> toJson() => {
+    'subtotal': subtotal,
+    'shipping': shipping,
+    'shipping_discount': shippingDiscount,
+  };
+  factory Details.fromEntity({required OrderEntity orderEntity}) {
+    return Details(
+      subtotal: orderEntity.cartItems.totalPrice.toString(),
+      shipping: orderEntity.calcuteShippingCost().toString(),
+      shippingDiscount: orderEntity.calculateShippingDiscount(),
+    );
+  }
 }

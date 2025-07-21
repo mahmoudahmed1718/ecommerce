@@ -12,4 +12,16 @@ class OrderEntity {
     this.shppingAddress,
     required this.userId,
   });
+
+  calcuteShippingCost() {
+    if (payWithCash!) {
+      return 30;
+    } else {
+      return 0;
+    }
+  }
+
+  calculateShippingDiscount() {
+    return 0;
+  }
 }
