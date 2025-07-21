@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/helper/get_user_data.dart';
 import 'package:ecommerce/core/widgets/build_app_bar.dart';
 import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_view_body.dart';
@@ -15,7 +16,7 @@ class CheckoutView extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context, title: 'الشحن', isNotification: false),
       body: Provider.value(
-        value: OrderEntity(cartItems: cartitems),
+        value: OrderEntity(userId: getUserData().id, cartItems: cartitems),
 
         child: const CheckoutViewBody(),
       ),
