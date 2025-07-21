@@ -24,4 +24,9 @@ class OrderEntity {
   calculateShippingDiscount() {
     return 0;
   }
+
+  calcuateTotalPriceAfterDiscountandShipping() {}
+  String getCurrency() {
+    return 'EGP';
+  }
 }
