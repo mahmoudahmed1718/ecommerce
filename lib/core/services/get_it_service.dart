@@ -1,3 +1,5 @@
+import 'package:ecommerce/core/repo/orders_repo/order_repo.dart';
+import 'package:ecommerce/core/repo/orders_repo/order_repo_impl.dart';
 import 'package:ecommerce/core/repo/product_repo/product_repo.dart';
 import 'package:ecommerce/core/repo/product_repo/product_repo_impl.dart';
 import 'package:ecommerce/core/services/database_service.dart';
@@ -20,5 +22,9 @@ void setupGetIt() {
   );
   getIt.registerSingleton<ProductRepo>(
     ProductRepoImpl(databaseService: getIt<DatabaseService>()),
+  );
+
+  getIt.registerSingleton<OrderRepo>(
+    OrderRepoImpl(databaseService: getIt<DatabaseService>()),
   );
 }
