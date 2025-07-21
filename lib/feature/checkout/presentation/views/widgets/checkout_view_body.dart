@@ -2,6 +2,7 @@ import 'package:ecommerce/core/widgets/custom_button.dart';
 import 'package:ecommerce/core/widgets/error_snack_bar.dart';
 import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
 import 'package:ecommerce/feature/checkout/domain/entites/paypal_payment_entity/paypal_payment_entity.dart';
+import 'package:ecommerce/feature/checkout/presentation/views/manger/add_order_cubit/add_order_cubit.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
@@ -61,7 +62,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   errorMessage: 'يرجي تحديد طريقه الدفع',
                 );
               } else {
-                _processPayment(context);
+                context.read<AddOrderCubit>().addOrder(
+                  order: context.read<OrderEntity>(),
+                );
+                context.read<AddOrderCubit>().addOrder(
+                  order: context.read<OrderEntity>(),
+                );
+                // _processPayment(context);
               }
             },
 
@@ -78,6 +85,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntities(
       entity: order,
     );
+    var addOrderCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder:
@@ -87,7 +95,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               secretKey: "",
               transactions: [paypalPaymentEntity.toJson()],
               note: "Contact us for any questions on your order.",
-              onSuccess: (Map params) async {},
+              onSuccess: (Map params) async {
+                addOrderCubit.addOrder(order: order);
+              },
               onError: (error) {
                 Navigator.pop(context);
               },
