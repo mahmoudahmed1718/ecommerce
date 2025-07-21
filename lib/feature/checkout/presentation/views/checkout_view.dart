@@ -4,6 +4,7 @@ import 'package:ecommerce/core/services/get_it_service.dart';
 import 'package:ecommerce/core/widgets/build_app_bar.dart';
 import 'package:ecommerce/feature/checkout/domain/entites/order_entity.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/manger/add_order_cubit/add_order_cubit.dart';
+import 'package:ecommerce/feature/checkout/presentation/views/widgets/add_order_cubit_bloc_builder.dart';
 import 'package:ecommerce/feature/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:ecommerce/feature/home/domain/entites/cart_entity.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class CheckoutView extends StatelessWidget {
         body: Provider.value(
           value: OrderEntity(userId: getUserData().id, cartItems: cartitems),
 
-          child: const CheckoutViewBody(),
+          child: AddOrderCubitBlocBuilder(child: const CheckoutViewBody()),
         ),
       ),
     );
