@@ -15,8 +15,9 @@ class FavouritProductRepoImpl implements FavouriteProductRepo {
     required ProductEntity product,
   }) async {
     try {
-      await databaseService.addData(
-        path: BackendPoints.addFavouriteProduct,
+      await databaseService.addDataInsideCollection(
+        collectionName: BackendPoints.addFavouriteProduct,
+        path: BackendPoints.addUserData,
         data: ProductModel.fromEntity(product).toJson(),
       );
       return Right(null);
