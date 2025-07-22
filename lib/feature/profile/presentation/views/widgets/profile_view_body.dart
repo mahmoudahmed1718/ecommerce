@@ -70,6 +70,26 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           const SizedBox(height: 16),
           swichButtonLanguage(),
           const SizedBox(height: 16),
+          ProfileItem(
+            onTap: () {},
+            icon: Icons.language_outlined,
+            text: 'Language',
+            childIcon: DropdownButton<String>(
+              value: context.locale.languageCode,
+              underline: const SizedBox(),
+              items: const [
+                DropdownMenuItem(value: 'en', child: Text('English')),
+                DropdownMenuItem(value: 'ar', child: Text('العربية')),
+              ],
+              onChanged: (value) {
+                if (value != null) {
+                  context.setLocale(Locale(value));
+                }
+              },
+            ),
+          ),
+
+          const SizedBox(height: 16),
         ],
       ),
     );
