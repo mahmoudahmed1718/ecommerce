@@ -6,6 +6,7 @@ import 'package:ecommerce/feature/home/presentation/views/product_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:ecommerce/feature/home/presentation/views/home_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/main_view_body_bloc_listener.dart';
+import 'package:ecommerce/feature/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,6 +69,7 @@ class _MainViewState extends State<MainView> {
       const HomeView(),
       const ProductView(),
       CartView(),
+      ProfileView(),
     ][currentViewIndex];
   }
 }
