@@ -1,4 +1,7 @@
+import 'package:ecommerce/core/repo/favourit_product_repo/favourit_product_repo.dart';
+import 'package:ecommerce/core/services/get_it_service.dart';
 import 'package:ecommerce/feature/home/presentation/manger/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce/feature/home/presentation/manger/favourit_product_cubit/favourit_product_cubit.dart';
 import 'package:ecommerce/feature/home/presentation/views/cart_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/product_view.dart';
 import 'package:ecommerce/feature/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
@@ -20,8 +23,15 @@ class _MainViewState extends State<MainView> {
   int currentViewIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CartCubit>(create: (context) => CartCubit()),
+        BlocProvider(
+          create:
+              (context) =>
+                  FavouritProductCubit(getIt.get<FavouriteProductRepo>()),
+        ), // Add
+      ],
       child: Scaffold(
         bottomNavigationBar: CustomBottomNavigationBar(
           onItemTapped: (index) {

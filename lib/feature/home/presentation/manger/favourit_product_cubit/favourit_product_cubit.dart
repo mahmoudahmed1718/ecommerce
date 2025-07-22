@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavouritProductCubit extends Cubit<FavouritProductState> {
   final FavouriteProductRepo favouriteProductRepo;
-  FavouritProductCubit(super.initialState, this.favouriteProductRepo);
+  FavouritProductCubit(this.favouriteProductRepo)
+    : super(FavouritProductInitial());
   void addFavouriteProduct({required ProductEntity product}) async {
     emit(FavouritProductLoading());
     final result = await favouriteProductRepo.addFavouriteProduct(
