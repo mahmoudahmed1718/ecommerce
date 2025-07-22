@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/feature/profile/presentation/views/edit_data_profile_view.dart';
+import 'package:ecommerce/feature/profile/presentation/views/manger/theme_cubit/theme_cubit_cubit.dart';
 import 'package:ecommerce/feature/profile/presentation/views/widgets/data_profile.dart';
 import 'package:ecommerce/feature/profile/presentation/views/widgets/general_word_widget.dart';
 import 'package:ecommerce/feature/profile/presentation/views/widgets/profile_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileViewBody extends StatefulWidget {
   const ProfileViewBody({super.key});
@@ -73,6 +75,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             childIcon: Switch(
               value: isSwitchedTheme,
               onChanged: (value) {
+                context.read<ThemeCubit>().toggleTheme(value);
                 setState(() {
                   isSwitchedTheme = value;
                 });
