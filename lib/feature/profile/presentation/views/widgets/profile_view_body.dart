@@ -1,6 +1,6 @@
-import 'package:ecommerce/core/utils/app_text_styels.dart';
 import 'package:ecommerce/feature/profile/presentation/views/edit_data_profile_view.dart';
 import 'package:ecommerce/feature/profile/presentation/views/widgets/data_profile.dart';
+import 'package:ecommerce/feature/profile/presentation/views/widgets/general_word_widget.dart';
 import 'package:ecommerce/feature/profile/presentation/views/widgets/profile_item.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +15,7 @@ class ProfileViewBody extends StatelessWidget {
           const SizedBox(height: 16),
           DataProfile(),
           const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [Text('general ', style: TextStyles.semiBold16)],
-          ),
+          GeneralWordWidget(text: 'General'),
           const SizedBox(height: 16),
           ProfileItem(
             onTap: () {
