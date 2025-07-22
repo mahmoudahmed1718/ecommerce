@@ -1,3 +1,5 @@
+import 'package:ecommerce/core/repo/favourit_product_repo/favourit_product_repo.dart';
+import 'package:ecommerce/core/repo/favourit_product_repo/favourit_product_repo_impl.dart';
 import 'package:ecommerce/core/repo/orders_repo/order_repo.dart';
 import 'package:ecommerce/core/repo/orders_repo/order_repo_impl.dart';
 import 'package:ecommerce/core/repo/product_repo/product_repo.dart';
@@ -31,5 +33,8 @@ void setupGetIt() {
   );
   getIt.registerSingleton<ChangeUserDataRepo>(
     ChangeUserDataRepoImpl(firebaseAuthServices: getIt<FirebaseAuthServices>()),
+  );
+  getIt.registerSingleton<FavouriteProductRepo>(
+    FavouritProductRepoImpl(databaseService: getIt<DatabaseService>()),
   );
 }
