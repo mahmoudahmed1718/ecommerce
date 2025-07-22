@@ -4,16 +4,23 @@ class ProfileModel extends ProfileEntity {
   ProfileModel({
     required super.name,
     required super.email,
-    required super.password,
+    required super.newPassword,
+    required super.currentPassword,
   });
+
+  Map<String, dynamic> toJson() => {
+    'currentPassword': currentPassword,
+    'name': name,
+    'email': email,
+    'newPassword': newPassword,
+  };
+
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
+      currentPassword: json['currentPassword'],
       name: json['name'],
       email: json['email'],
-      password: json['password'],
+      newPassword: json['newPassword'],
     );
-  }
-  Map<String, dynamic> toJson() {
-    return {'name': name, 'email': email, 'password': password};
   }
 }

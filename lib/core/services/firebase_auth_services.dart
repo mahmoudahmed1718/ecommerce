@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/core/error/exception.dart';
+import 'package:ecommerce/core/utils/backend_points.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -123,5 +125,51 @@ class FirebaseAuthServices {
 
   Future<User?> getCurrentUser() async {
     return FirebaseAuth.instance.currentUser;
+  }
+
+  Future<void> reauthenticate({
+    required String email,
+    required String password,
+  }) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      await user.reauthenticateWithCredential(credential);
+    }
+  }
+
+  Future<void> updateUserProfile({
+    required String uid,
+    required String name,
+    required String email,
+    required String newPassword,
+  }) async {
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user == null) {
+      throw FirebaseAuthException(
+        code: 'no-user',
+        message: 'No user is currently signed in.',
+      );
+    }
+
+    if (user.email != email) {
+      await user.verifyBeforeUpdateEmail(email);
+    }
+
+    if (newPassword.isNotEmpty) {
+      await user.updatePassword(newPassword);
+    }
+
+    await user.updateDisplayName(name);
+
+    // Update Firestore
+    await FirebaseFirestore.instance
+        .collection(BackendPoints.addUserData)
+        .doc(uid)
+        .update({"name": name, "email": email});
   }
 }

@@ -8,18 +8,33 @@ class ChangeUserDataRepoImpl implements ChangeUserDataRepo {
   final FirebaseAuthServices firebaseAuthServices;
 
   ChangeUserDataRepoImpl({required this.firebaseAuthServices});
+
   @override
   Future<Either<Faileur, void>> changeUserData({
     required ProfileEntity profileEntity,
   }) async {
     try {
-      var user = await firebaseAuthServices.getCurrentUser();
-      await user!.updateDisplayName(profileEntity.name);
-      await user.verifyBeforeUpdateEmail(profileEntity.email);
-      await user.updatePassword(profileEntity.password);
+      final user = await firebaseAuthServices.getCurrentUser();
+
+      if (user == null) {
+        return Left(ServerFaileur(message: 'No user found'));
+      }
+
+      await firebaseAuthServices.reauthenticate(
+        email: user.email!,
+        password: profileEntity.currentPassword,
+      );
+
+      await firebaseAuthServices.updateUserProfile(
+        uid: user.uid,
+        name: profileEntity.name,
+        email: profileEntity.email,
+        newPassword: profileEntity.newPassword,
+      );
+
       return Right(null);
-    } on ServerFaileur catch (e) {
-      return Left(ServerFaileur(message: e.message));
+    } catch (e) {
+      return Left(ServerFaileur(message: e.toString()));
     }
   }
 }
