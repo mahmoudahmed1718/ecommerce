@@ -17,6 +17,7 @@ class SignInView extends StatelessWidget {
       create: (context) => SignInCubit(getIt.get<AuthRepo>()),
       child: Scaffold(
         appBar: buildAppbar(
+          isbackbutton: false,
           context: context,
           titel: LocaleKeys.Login.tr(),
 

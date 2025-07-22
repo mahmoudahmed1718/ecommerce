@@ -5,13 +5,17 @@ AppBar buildAppbar({
   required BuildContext context,
   required String titel,
   List<Widget>? actions,
+  final bool isbackbutton = true,
 }) => AppBar(
   actions: actions,
-  leading: GestureDetector(
-    onTap: () {
-      Navigator.pop(context);
-    },
-    child: Icon(Icons.arrow_back_ios_new_outlined),
+  leading: Visibility(
+    visible: isbackbutton,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Icon(Icons.arrow_back_ios_new_outlined),
+    ),
   ),
   centerTitle: true,
   title: Text(titel, style: TextStyles.bold23),
