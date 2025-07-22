@@ -6,6 +6,7 @@ import 'package:ecommerce/feature/checkout/presentation/views/checkout_view.dart
 import 'package:ecommerce/feature/home/domain/entites/cart_entity.dart';
 import 'package:ecommerce/feature/home/presentation/views/main_view.dart';
 import 'package:ecommerce/feature/onboarding/presentation/views/on_boarding_view.dart';
+import 'package:ecommerce/feature/profile/presentation/views/edit_data_profile_view.dart';
 import 'package:ecommerce/feature/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,10 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case BestSellingFruitsView.routeName:
       return MaterialPageRoute(
         builder: (context) => const BestSellingFruitsView(),
+      );
+    case EditDataProfileView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const EditDataProfileView(),
       );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
