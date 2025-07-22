@@ -120,4 +120,8 @@ class FirebaseAuthServices {
     await GoogleSignIn().signOut();
     await FacebookAuth.instance.logOut();
   }
+
+  Future<User?> getCurrentUser() async {
+    return FirebaseAuth.instance.currentUser;
+  }
 }
