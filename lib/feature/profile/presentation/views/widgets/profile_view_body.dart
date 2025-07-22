@@ -5,6 +5,9 @@ class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(children: [const SizedBox(height: 16), DataProfile()]);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(children: [const SizedBox(height: 16), DataProfile()]),
+    );
   }
 }
