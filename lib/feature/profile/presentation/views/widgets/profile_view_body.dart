@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce/core/services/firebase_auth_services.dart';
+import 'package:ecommerce/core/widgets/custom_button.dart';
+import 'package:ecommerce/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:ecommerce/feature/profile/presentation/views/edit_data_profile_view.dart';
 import 'package:ecommerce/feature/profile/presentation/views/manger/theme_cubit/theme_cubit_cubit.dart';
 import 'package:ecommerce/feature/profile/presentation/views/widgets/data_profile.dart';
@@ -89,9 +92,46 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 64),
+          CustomButton(
+            onpressed: () {
+              logoutAlertDiolaoge(context);
+            },
+            text: 'Logout',
+          ),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> logoutAlertDiolaoge(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Logout'),
+          content: Text('Are you sure you want to logout?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'.tr()),
+            ),
+            TextButton(
+              onPressed: () {
+                FirebaseAuthServices().signOut();
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  SignInView.routeName,
+                  (route) => false,
+                );
+              },
+              child: Text('Confirm'.tr()),
+            ),
+          ],
+        );
+      },
     );
   }
 
