@@ -68,23 +68,34 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             ),
           ),
           const SizedBox(height: 16),
-          ProfileItem(
-            onTap: () {},
-            icon: Icons.notifications_none_outlined,
-            text: 'Dark Mode',
-            childIcon: Switch(
-              value: isSwitchedTheme,
-              onChanged: (value) {
-                context.read<ThemeCubit>().toggleTheme(value);
-                setState(() {
-                  isSwitchedTheme = value;
-                });
-              },
-            ),
-          ),
+          swichButtonLanguage(),
           const SizedBox(height: 16),
         ],
       ),
+    );
+  }
+
+  BlocBuilder<ThemeCubit, ThemeMode> swichButtonLanguage() {
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, state) {
+        return ProfileItem(
+          onTap: () {},
+          icon:
+              state == ThemeMode.dark
+                  ? Icons.dark_mode_outlined
+                  : Icons.light_mode_outlined,
+          text: 'Theme',
+          childIcon: Switch(
+            value: state == ThemeMode.dark,
+            onChanged: (value) {
+              context.read<ThemeCubit>().toggleTheme(value);
+              setState(() {
+                isSwitchedTheme = value;
+              });
+            },
+          ),
+        );
+      },
     );
   }
 }

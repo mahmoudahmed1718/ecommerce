@@ -19,7 +19,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       width: 375,
       height: 75,
       decoration: ShapeDecoration(
-        color: Colors.white,
+        color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
