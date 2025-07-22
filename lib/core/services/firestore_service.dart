@@ -58,4 +58,22 @@ class FirestoreService implements DatabaseService {
     var result = await data.get();
     return result.docs.map((doc) => doc.data()).toList();
   }
+
+  @override
+  Future<void> addDataInsideCollection({
+    required String path,
+    required String collectionName,
+    required Map<String, dynamic> data,
+    String? documentId,
+  }) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection(path)
+          .doc(documentId)
+          .collection(collectionName)
+          .add(data);
+    } catch (e) {
+      throw Exception('Failed to add data inside collection: $e');
+    }
+  }
 }

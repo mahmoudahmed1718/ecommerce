@@ -70,4 +70,22 @@ class ProductModel extends ProductEntity {
               .toList(),
     };
   }
+
+  factory ProductModel.fromEntity(ProductEntity entity) {
+    return ProductModel(
+      name: entity.name,
+      description: entity.description,
+      price: entity.price,
+      code: entity.code,
+      isFeatured: entity.isFeatured,
+      isOrgainic: entity.isOrgainic,
+      imageUrl: entity.imageUrl,
+      monthExpires: entity.monthExpires,
+      numberOfCalories: entity.numberOfCalories,
+      unitAmount: entity.unitAmount,
+      reviews: entity.reviews,
+      avergeRating: entity.avergeRating,
+      sellingcount: 0, // Default value, can be updated later
+    );
+  }
 }

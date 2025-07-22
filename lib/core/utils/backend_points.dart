@@ -3,4 +3,5 @@ class BackendPoints {
   static const getUserData = 'users';
   static const getPorducts = 'products';
   static const addOrder = 'orders';
+  static const addFavouriteProduct = 'favouriteProducts';
 }
