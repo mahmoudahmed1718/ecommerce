@@ -6,4 +6,7 @@ abstract class FavouriteProductRepo {
   Future<Either<Faileur, void>> addFavouriteProduct({
     required ProductEntity product,
   });
+  Future<Either<Faileur, void>> getDataInsideCollection({
+    required ProductEntity product,
+  });
 }

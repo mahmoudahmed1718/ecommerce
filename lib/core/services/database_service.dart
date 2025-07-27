@@ -17,6 +17,7 @@ abstract class DatabaseService {
   Future<void> getDataInsideCollection({
     required String path,
     required String collectionName,
+
     required String documentId,
   });
   Future<Map<String, dynamic>> getData({

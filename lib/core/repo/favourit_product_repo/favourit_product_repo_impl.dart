@@ -25,4 +25,20 @@ class FavouritProductRepoImpl implements FavouriteProductRepo {
       return Left(ServerFaileur(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Faileur, void>> getDataInsideCollection({
+    required ProductEntity product,
+  }) async {
+    try {
+      await databaseService.getDataInsideCollection(
+        collectionName: BackendPoints.addFavouriteProduct,
+        path: BackendPoints.addUserData,
+        documentId: product.code,
+      );
+      return Right(null);
+    } catch (e) {
+      return Left(ServerFaileur(message: e.toString()));
+    }
+  }
 }
