@@ -1,6 +1,8 @@
 import 'package:ecommerce/core/entites/product_entity.dart';
 import 'package:ecommerce/core/widgets/custom_network_image.dart';
 import 'package:ecommerce/feature/home/presentation/manger/cart_cubit/cart_cubit.dart';
+import 'package:ecommerce/feature/home/presentation/manger/favourit_product_cubit/favourit_product_cubit.dart';
+import 'package:ecommerce/feature/home/presentation/manger/favourit_product_cubit/favourit_product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_text_styels.dart';
@@ -26,10 +28,10 @@ class FruitItem extends StatelessWidget {
       child: Stack(
         children: [
           // Heart Icon
-          const Positioned(
-            top: 0,
-            right: 0,
-            child: Icon(Icons.favorite_border),
+          Positioned(
+            top: -10,
+            right: -10,
+            child: FavoutitButton(product: product),
           ),
 
           Column(
@@ -70,12 +72,12 @@ class FruitItem extends StatelessWidget {
                             color: AppColors.lightSecondaryColor,
                           ),
                         ),
-                        Text(
-                          '${product.unitAmount}/g',
-                          style: TextStyles.regular13.copyWith(
-                            color: AppColors.lightSecondaryColor,
-                          ),
-                        ),
+                        // Text(
+                        //   '${product.unitAmount}/g',
+                        //   style: TextStyles.regular13.copyWith(
+                        //     color: AppColors.lightSecondaryColor,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -95,6 +97,35 @@ class FruitItem extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class FavoutitButton extends StatelessWidget {
+  const FavoutitButton({super.key, required this.product});
+  final ProductEntity product;
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<FavouritProductCubit, FavouritProductState>(
+      listener: (context, state) {
+        if (state is FavouritProductSuccess) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Added to favourites')));
+        } else if (state is FavouritProductFailure) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
+        }
+      },
+      child: IconButton(
+        onPressed: () {
+          context.read<FavouritProductCubit>().addFavouriteProduct(
+            product: product,
+          );
+        },
+        icon: const Icon(Icons.favorite_border, color: Colors.grey),
       ),
     );
   }

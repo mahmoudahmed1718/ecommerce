@@ -24,7 +24,8 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
         style: TextStyles.regular16.copyWith(color: Color(0XFF949D9E)),
       ),
       subtitle: Text(
-        FirebaseAuth.instance.currentUser!.displayName!,
+        FirebaseAuth.instance.currentUser!.displayName ?? "User",
+
         style: TextStyles.bold16,
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ecommerce/core/services/database_service.dart';
 
 class FirestoreService implements DatabaseService {
@@ -74,6 +75,25 @@ class FirestoreService implements DatabaseService {
           .add(data);
     } catch (e) {
       throw Exception('Failed to add data inside collection: $e');
+    }
+  }
+
+  @override
+  Future<void> getDataInsideCollection({
+    required String path,
+    required String collectionName,
+    required String documentId,
+  }) {
+    try {
+      var snapshot =
+          FirebaseFirestore.instance
+              .collection(path)
+              .doc(documentId)
+              .collection(collectionName)
+              .get();
+      return snapshot;
+    } catch (e) {
+      throw Exception('Failed to get data inside collection: $e');
     }
   }
 }
