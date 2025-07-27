@@ -30,12 +30,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [SvgPicture.asset(Assets.imagesPlant)],
-        ),
-        SvgPicture.asset(Assets.imagesLogo),
-        SvgPicture.asset(Assets.imagesCircles, fit: BoxFit.fill),
+        Center(child: Image.asset(Assets.imagesSplashImage, scale: 2.5)),
       ],
     );
   }

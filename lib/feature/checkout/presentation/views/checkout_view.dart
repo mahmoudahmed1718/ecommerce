@@ -21,7 +21,7 @@ class CheckoutView extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddOrderCubit(orderRepo: getIt.get<OrderRepo>()),
       child: Scaffold(
-        appBar: buildAppBar(context, title: 'الشحن', isNotification: false),
+        appBar: buildAppBar(context, title: 'Checkout', isNotification: false),
         body: Provider.value(
           value: OrderEntity(userId: getUserData().id, cartItems: cartitems),
 

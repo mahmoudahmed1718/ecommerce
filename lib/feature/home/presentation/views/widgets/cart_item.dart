@@ -60,12 +60,12 @@ class CartItem extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            '${cartItemEntity.calculateTotalWeight()} kg',
-                            style: TextStyles.bold13.copyWith(
-                              color: AppColors.secondaryColor,
-                            ),
-                          ),
+                          // Text(
+                          //   '${cartItemEntity.calculateTotalWeight()} kg',
+                          //   style: TextStyles.bold13.copyWith(
+                          //     color: AppColors.secondaryColor,
+                          //   ),
+                          // ),
                         ],
                       ),
 

@@ -41,6 +41,7 @@ class FruitItem extends StatelessWidget {
 
               // Responsive Image
               Flexible(
+                flex: 8,
                 child:
                     product.imageUrl != null
                         ? CustomNetworkImage(

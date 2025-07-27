@@ -10,7 +10,7 @@ class OrderSummryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaymentItem(
-      tile: 'ملخص الطلب',
+      tile: 'Order Summary',
       child: Column(
         children: [
           Row(

@@ -24,8 +24,8 @@ class _ShippingSectionState extends State<ShippingSection> {
             context.read<OrderEntity>().payWithCash = true;
           },
           isSelected: selectedIndex == 0,
-          title: 'الدفع عند الاستلام',
-          subTitle: 'التسليم من المكان',
+          title: 'Pay when delivered',
+          subTitle: 'Pay with cash on delivery',
           price:
               (context.read<OrderEntity>().cartItems.totalPrice() + 40)
                   .toString(),
@@ -38,8 +38,8 @@ class _ShippingSectionState extends State<ShippingSection> {
             context.read<OrderEntity>().payWithCash = false;
           },
           isSelected: selectedIndex == 1,
-          title: 'الدفع اونلاين',
-          subTitle: 'يرجي تحديد طريقه الدفع',
+          title: 'Pay online',
+          subTitle: 'Pay with PayPal',
           price: context.read<OrderEntity>().cartItems.totalPrice().toString(),
         ),
       ],

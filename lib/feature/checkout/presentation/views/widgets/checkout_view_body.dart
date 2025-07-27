@@ -59,7 +59,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               } else if (currentPageIndex == 1) {
                 buildErrorSnackBar(
                   context,
-                  errorMessage: 'يرجي تحديد طريقه الدفع',
+                  errorMessage: '.Please select a payment method.',
                 );
               } else {
                 context.read<AddOrderCubit>().addOrder(
@@ -72,7 +72,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               }
             },
 
-            text: 'التالي',
+            text: "Next",
           ),
           const SizedBox(height: 32),
         ],
